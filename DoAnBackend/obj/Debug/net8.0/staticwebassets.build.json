@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "IpxRn29rd5vnp7eSg6a4AzpCgLGwuk5oagQp/DZes/s=",
+  "Source": "DoAnBackend",
+  "BasePath": "_content/DoAnBackend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "DoAnBackend\\wwwroot",
+      "Source": "DoAnBackend",
+      "ContentRoot": "C:\\Code\\DoAn\\DoAnBackend\\wwwroot\\",
+      "BasePath": "_content/DoAnBackend",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
