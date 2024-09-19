@@ -8,7 +8,7 @@ namespace DoAnBackend.Data
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
         public DateOnly DateOfBirth { get; set; }
-        public EnumEntity.Gender Gender { get; set; } = EnumEntity.Gender.Male;
+        public string Gender { get; set; }
 
         public virtual ICollection<Notification> Notifications { get; set; }
         public virtual ICollection<Blog> Authors { get; set; }

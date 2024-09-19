@@ -4,7 +4,7 @@ namespace DoAnBackend.Data
 {
     public class Blog : BaseEntity
     {
-        public DateTime Date { get; set; }
+        public string? Slug { get; set; }
         public string? Title { get; set; }
         public string? Content { get; set; }
 
@@ -15,7 +15,7 @@ namespace DoAnBackend.Data
         public Category? Category { get; set; }
 
         public string? FeaturesImage { get; set; }
-        public EnumEntity.BlogStatus Status { get; set; }
+        public string? Status { get; set; }
         public int View { get; set; }
 
         public ICollection<BlogTag>? BlogTags { get; set; }

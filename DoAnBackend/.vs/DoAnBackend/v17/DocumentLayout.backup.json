@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "C:\\Code\\DoAn\\DoAnBackend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\repositories\\blogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:repositories\\blogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\repositories\\interface\\iblogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:repositories\\interface\\iblogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\models\\blogmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:models\\blogmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\data\\blog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:data\\blog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\repositories\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:repositories\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\repositories\\interface\\iaccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:repositories\\interface\\iaccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\repositories\\interface\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:repositories\\interface\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,53 +39,85 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAIwCUAAABEAAAAAAAAAA==",
+              "Title": "BlogRepository.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\BlogRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\BlogRepository.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\BlogRepository.cs",
+              "RelativeToolTip": "Repositories\\BlogRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T06:49:35.071Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IAccountRepository.cs",
-              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\Interface\\IAccountRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\Interface\\IAccountRepository.cs",
-              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\Interface\\IAccountRepository.cs",
-              "RelativeToolTip": "Repositories\\Interface\\IAccountRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T06:09:59.149Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AccountService.cs",
-              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Services\\AccountService.cs",
-              "RelativeDocumentMoniker": "Services\\AccountService.cs",
-              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Services\\AccountService.cs",
-              "RelativeToolTip": "Services\\AccountService.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAADsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T06:01:45.368Z",
+              "WhenOpened": "2024-09-19T07:47:34.483Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AccountRepository.cs",
-              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\AccountRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\AccountRepository.cs",
-              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\AccountRepository.cs",
-              "RelativeToolTip": "Repositories\\AccountRepository.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAACgAAAAtAAAAAAAAAA==",
+              "Title": "IBlogRepository.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\Interface\\IBlogRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Interface\\IBlogRepository.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\Interface\\IBlogRepository.cs",
+              "RelativeToolTip": "Repositories\\Interface\\IBlogRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-17T05:56:01.669Z",
+              "WhenOpened": "2024-09-19T07:45:10.957Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BlogModel.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Models\\BlogModel.cs",
+              "RelativeDocumentMoniker": "Models\\BlogModel.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Models\\BlogModel.cs",
+              "RelativeToolTip": "Models\\BlogModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T07:36:39Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Blog.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Data\\Blog.cs",
+              "RelativeDocumentMoniker": "Data\\Blog.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Data\\Blog.cs",
+              "RelativeToolTip": "Data\\Blog.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T07:36:06.781Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T07:24:31.096Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ICategoryRepository.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\Interface\\ICategoryRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Interface\\ICategoryRepository.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\Interface\\ICategoryRepository.cs",
+              "RelativeToolTip": "Repositories\\Interface\\ICategoryRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-18T16:52:58.08Z",
               "EditorCaption": ""
             }
           ]

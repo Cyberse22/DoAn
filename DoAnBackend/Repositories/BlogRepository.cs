@@ -18,30 +18,37 @@ namespace DoAnBackend.Repositories
 
         }
 
-        public async Task<int> addBlogAsync(BlogModel model)
-        {
-            await _context.SaveChangesAsync();
-            return 0;
-        }
-
-        public Task<int> deleteBlogAsync(int id)
+        public Task<int> AddBlogAsync(BlogModel model)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<List<BlogModel>> getAllBlogsAsync()
+        public Task DeleteBlogAsync(int id)
         {
-            var blogs = await _context.Blogs!.ToListAsync();
-            return _mapper.Map<List<BlogModel>>(blogs);
+            throw new NotImplementedException();
         }
 
-        public async Task<BlogModel> getBlogByIdAsync(int id)
+        public Task<List<BlogModel>> GetAllBlogsAsync()
         {
-            var blog = await _context.Blogs!.FindAsync(id);
-            return _mapper.Map<BlogModel>(blog);
+            throw new NotImplementedException();
         }
 
-        public Task updateBlogAsync(int id, BlogModel model)
+        public Task<BlogModel> GetBlogByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<BlogModel> GetBlogByNameAsync(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<BlogModel> GetBlogBySlugAsync(string slug)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateBlogAsync(int id, BlogModel model)
         {
             throw new NotImplementedException();
         }

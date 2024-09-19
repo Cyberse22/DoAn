@@ -5,11 +5,13 @@ namespace DoAnBackend.Repositories.Interface
 {
     public interface IBlogRepository
     {
-        public Task<List<BlogModel>> getAllBlogsAsync();
-        public Task<BlogModel> getBlogByIdAsync(int id);
-        public Task<int> addBlogAsync(BlogModel model);
-        public Task updateBlogAsync(int id, BlogModel model);
-        public Task<int> deleteBlogAsync(int id);
+        public Task<List<BlogModel>> GetAllBlogsAsync();
+        public Task<BlogModel> GetBlogByIdAsync(int id);
+        public Task<BlogModel> GetBlogByNameAsync(string name);
+        public Task<BlogModel> GetBlogBySlugAsync(string slug);
+        public Task<int> AddBlogAsync(BlogModel model);
+        public Task UpdateBlogAsync(int id, BlogModel model);
+        public Task DeleteBlogAsync(int id);
 
     }
 }

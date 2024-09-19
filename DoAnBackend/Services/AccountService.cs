@@ -1,4 +1,5 @@
-﻿using DoAnBackend.Models;
+﻿using DoAnBackend.Data;
+using DoAnBackend.Models;
 using DoAnBackend.Repositories.Interface;
 using DoAnBackend.Services.Interface;
 using Microsoft.AspNetCore.Identity;
@@ -13,11 +14,15 @@ namespace DoAnBackend.Services
     {
         private readonly IAccountRepository _accountRepository;
         private readonly IConfiguration _configuration;
+        private readonly UserManager<User> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AccountService(IAccountRepository accountRepository, IConfiguration configuration)
+        public AccountService(IAccountRepository accountRepository, IConfiguration configuration, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
         {
             _accountRepository = accountRepository;
             _configuration = configuration;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         public async Task<string> SignInAsync(SignInModel model)
@@ -55,6 +60,45 @@ namespace DoAnBackend.Services
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public async Task<IdentityResult> CreateAdminAsync(SignUpModel model)
+        {
+            var result = await SignUpAsync(model);
+            if (!result.Succeeded)
+            {
+                return result;
+            }
+
+            // Lấy User vừa tạo để làm Admin
+            var user = await _userManager.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                return IdentityResult.Failed(new IdentityError { Description = "User not found." });
+            }
+
+            // Gán role Admin cho User
+            var roleResult = await AssignRoleAsync(user, "Admin");
+            if (!roleResult)
+            {
+                return IdentityResult.Failed(new IdentityError { Description = "Failed to assign Admin role." });
+            }
+
+            return IdentityResult.Success;
+        }    
+
+        public async Task<bool> AssignRoleAsync(User user, string role)
+        {
+            var roleExists = await _roleManager.RoleExistsAsync(role);
+            if (!roleExists) 
+            {
+                // Tạo mới role nếu chưa tồn tại
+                await _roleManager.CreateAsync(new IdentityRole(role));
+            }
+
+            // Gán Role cho User
+            var result = await _userManager.AddToRoleAsync(user, role);
+            return result.Succeeded;
         }
     }
 }

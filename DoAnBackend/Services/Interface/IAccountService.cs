@@ -1,11 +1,14 @@
-﻿using DoAnBackend.Models;
+﻿using DoAnBackend.Data;
+using DoAnBackend.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace DoAnBackend.Services.Interface
 {
     public interface IAccountService
     {
-        public Task<IdentityResult> SignUpAsync(SignUpModel model);
-        public Task<string> SignInAsync(SignInModel model);
+        Task<IdentityResult> SignUpAsync(SignUpModel model);
+        Task<string> SignInAsync(SignInModel model);
+        Task<IdentityResult> CreateAdminAsync(SignUpModel model);
+        Task<bool> AssignRoleAsync(User user, string role);
     }
 }
