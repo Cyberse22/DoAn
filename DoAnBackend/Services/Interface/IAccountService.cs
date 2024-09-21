@@ -9,6 +9,8 @@ namespace DoAnBackend.Services.Interface
         Task<IdentityResult> SignUpAsync(SignUpModel model);
         Task<string> SignInAsync(SignInModel model);
         Task<IdentityResult> CreateAdminAsync(SignUpModel model);
-        Task<bool> AssignRoleAsync(User user, string role);
+        Task<bool> AssignRoleAsync(ApplicationUser user, string role);
+        Task<IdentityUser> GetCurrentUserAsync();
+        Task<bool> ChangePasswordAsync(PasswordModel passwordModel);
     }
 }

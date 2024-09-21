@@ -14,15 +14,17 @@ namespace DoAnBackend.Services
     {
         private readonly IAccountRepository _accountRepository;
         private readonly IConfiguration _configuration;
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public AccountService(IAccountRepository accountRepository, IConfiguration configuration, UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+        public AccountService(IAccountRepository accountRepository, IConfiguration configuration, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IHttpContextAccessor httpContextAccessor)
         {
             _accountRepository = accountRepository;
             _configuration = configuration;
             _userManager = userManager;
             _roleManager = roleManager;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<string> SignInAsync(SignInModel model)
@@ -87,7 +89,7 @@ namespace DoAnBackend.Services
             return IdentityResult.Success;
         }    
 
-        public async Task<bool> AssignRoleAsync(User user, string role)
+        public async Task<bool> AssignRoleAsync(ApplicationUser user, string role)
         {
             var roleExists = await _roleManager.RoleExistsAsync(role);
             if (!roleExists) 
@@ -99,6 +101,34 @@ namespace DoAnBackend.Services
             // Gán Role cho User
             var result = await _userManager.AddToRoleAsync(user, role);
             return result.Succeeded;
+        }
+
+        public async Task<IdentityUser> GetCurrentUserAsync()
+        {
+            var userId = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+            {
+                return null;
+            }
+            return await _accountRepository.GetUserByIdAsync(userId);
+        }
+
+        public async Task<bool> ChangePasswordAsync(PasswordModel passwordModel)
+        {
+            var user = await GetCurrentUserAsync();
+            if (user == null) 
+            {
+                return false;
+            }
+
+            var result = await _userManager.ChangePasswordAsync((ApplicationUser)user, passwordModel.CurrentPassword, passwordModel.NewPassword);
+            if (result.Succeeded) 
+            {
+                await _accountRepository.UpdateUserAsync((ApplicationUser)user);
+                return true;
+            }
+
+            return false;
         }
     }
 }

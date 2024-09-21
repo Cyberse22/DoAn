@@ -5,14 +5,18 @@
         public static class UserRoles
         {
             public const string Admin = "Admin";
-            public const string User = "User";
+            public const string Patient = "Patient";
+            public const string Doctor = "Doctor";
+            public const string Nurse = "Nurse";
         }
 
-        public static class BlogStatus 
+        public static class Status
         {
-            public static string Publish = "Publish";
-            public static string Draft = "Draft";
-            public static string Pending = "Pending";
+            public static string PendingConfirmation = "Pending Confirmation";
+            public static string Confirmed = "Confirmed";
+            public static string Cancelled = "Cancelled";
+            public static string ExaminationInProgress = "Examination In Progress";
+            public static string ExamCompleted = "Exam Completed";
         }
 
         public static class Gender 

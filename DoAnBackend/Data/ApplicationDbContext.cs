@@ -5,49 +5,123 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DoAnBackend.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<User>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
         }
 
         #region
-        public DbSet<Blog> Blogs { get; set; }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Tag> Tags { get; set; }
-        public DbSet<BlogTag> BlogsTags { get; set; }
-        public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<InvoiceService> InvoicesServices { get; set; }
+        public DbSet<InvoiceMedicine> InvoiceMedicines { get; set; }
+        public DbSet<Medicine> Medicines { get; set; }
+        public DbSet<Nurse> Nurses { get; set; }
+        public DbSet<Patient> Patients { get; set; }
+        public DbSet<Prescription> Prescriptions { get; set; }
+        public DbSet<PrescriptionDetail> PrescriptionDetails { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<ApplicationRole> ApplicationRoles { get; set; }
+        public DbSet<ApplicationUserRole> ApplicationUserRoles { get; set; }
         #endregion
 
         #region
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        { 
+        {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<BlogTag>()
-                .HasKey(bt => new { bt.BlogId, bt.TagId });
+            // Appointment and Patient (1-to-Many)
+            modelBuilder.Entity<Appointment>()
+            .HasOne(a => a.Patient)
+            .WithMany(p => p.Appointments)
+            .HasForeignKey(a => a.PatientId)
+            .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<BlogTag>()
-                .HasOne(bt => bt.Blog)
-                .WithMany(b => b.BlogTags)
-                .HasForeignKey(bt => bt.BlogId)
-                .OnDelete(DeleteBehavior.SetNull);
+            // Appointment and Doctor (1-to-Many)
+            modelBuilder.Entity<Appointment>()
+            .HasOne(a => a.Patient)
+            .WithMany(p => p.Appointments)
+            .HasForeignKey(a => a.PatientId)
+            .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<BlogTag>()
-                 .HasOne(bt => bt.Tag)
-                 .WithMany(t => t.BlogTags)
-                 .HasForeignKey(bt => bt.TagId)
-                 .OnDelete(DeleteBehavior.SetNull);
+            // Appointment and Nurse (1-to-Many)
+            modelBuilder.Entity<Appointment>()
+                .HasOne(a => a.Nurse)
+                .WithMany(n => n.Appointments)
+                .HasForeignKey(a => a.NurseId)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<User>()
-                .HasMany(u => u.Notifications)
-                .WithOne(n => n.User)
-                .HasForeignKey(n => n.UserId)
+            // Prescription and Patient (1-to-Many)
+            modelBuilder.Entity<Prescription>()
+                .HasOne(p => p.Patient)
+                .WithMany(pa => pa.Prescriptions)
+                .HasForeignKey(p => p.PatientId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Prescription and Doctor (1-to-Many)
+            modelBuilder.Entity<Prescription>()
+                .HasOne(p => p.Doctor)
+                .WithMany(d => d.Prescriptions)
+                .HasForeignKey(p => p.DoctorId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Prescription and Appointment (1-to-1)
+            modelBuilder.Entity<Prescription>()
+                .HasOne(p => p.Appointment)
+                .WithOne(a => a.Prescription)
+                .HasForeignKey<Prescription>(p => p.AppointmentId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<User>()
-                .Property(u => u.Gender)
-                .HasConversion<string>();
+            // Invoice and Appointment (1-to-1)
+            modelBuilder.Entity<Invoice>()
+                .HasOne(i => i.Appointment)
+                .WithOne(a => a.Invoice)
+                .HasForeignKey<Invoice>(i => i.AppointmentId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Invoice and Prescription (1-1)
+            modelBuilder.Entity<Invoice>()
+                .HasOne(i => i.Prescription)
+                .WithOne(p => p.Invoice)
+                .HasForeignKey<Invoice>(i => i.PrescriptionId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // (Many-Many) between Invoice and Service through InvoiceService
+            modelBuilder.Entity<InvoiceService>()
+                .HasOne(ise => ise.Invoice)
+                .WithMany(i => i.InvoiceServices)
+                .HasForeignKey(ise => ise.InvoicedId);
+
+            modelBuilder.Entity<InvoiceService>()
+                .HasOne(ise => ise.Service)
+                .WithMany(s => s.InvoiceServices)
+                .HasForeignKey(ise => ise.ServiceId);
+
+            // (Many-Many) between Invoice and Medicine through InvoiceMedicine
+            modelBuilder.Entity<InvoiceMedicine>()
+                .HasOne(im => im.Invoice)
+                .WithMany(i => i.InvoiceMedicines)
+                .HasForeignKey(im => im.InvoiceId);
+
+            modelBuilder.Entity<InvoiceMedicine>()
+                .HasOne(im => im.Medicine)
+                .WithMany(m => m.InvoiceMedicines)
+                .HasForeignKey(im => im.MedicineId);
+
+            // PrescriptionDetail and Prescription (1-to-Many)
+            modelBuilder.Entity<PrescriptionDetail>()
+                .HasOne(pd => pd.Prescription)
+                .WithMany(p => p.PrescriptionDetails)
+                .HasForeignKey(pd => pd.PrescriptionId);
+
+            //  PrescriptionDetail and Medicine (Many-To-Many)
+            modelBuilder.Entity<PrescriptionDetail>()
+                .HasOne(pd => pd.Medicine)
+                .WithMany(m => m.PrescriptionDetails)
+                .HasForeignKey(pd => pd.MedicineId);
         }
         #endregion
     }

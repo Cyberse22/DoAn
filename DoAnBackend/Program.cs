@@ -1,3 +1,4 @@
+using DoAnBackend;
 using DoAnBackend.Data;
 using DoAnBackend.Repositories;
 using DoAnBackend.Repositories.Interface;
@@ -9,6 +10,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+using dotenv.net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,20 +21,11 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 
-//builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
-//    {
-//        options.Password.RequireDigit = true;
-//        options.Password.RequireLowercase = true;
-//        options.Password.RequireUppercase = true;
-//        options.Password.RequireNonAlphanumeric = false;
-//        options.Password.RequiredLength = 6;
-//    })
-//    .AddEntityFrameworkStores<ApplicationDbContext>()
-//    .AddDefaultTokenProviders();
-
 // Add services to the container.
-
+builder.Services.AddControllersWithViews();
 builder.Services.AddControllers();
+builder.Services.AddCoreAdmin();
+builder.Services.AddHttpContextAccessor();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -65,18 +60,17 @@ builder.Services.AddSwaggerGen(option =>
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
     policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
 
-builder.Services.AddIdentity<User, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
 
 // Lift cycle DI: AddSingleTon(), AddTransient(), AddScoped()
-builder.Services.AddScoped<IBlogRepository, BlogRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IAccountService, AccountService>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-
-// Jwt
+// Jwt, Authentication an Authorization
 builder.Services.AddAuthentication(options => {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -95,6 +89,19 @@ builder.Services.AddAuthentication(options => {
     };
 });
 
+builder.Services.AddAuthorization(options => 
+{
+    options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole("Admin"));
+});
+
+// Cloudinary
+Account account = new Account(
+    "djpnrpe8a",
+    "168397644872791",
+    "irfXhJewuMb0Z6hFOskfoEDdrf8");
+Cloudinary cloudinary = new Cloudinary(account);
+cloudinary.Api.Secure = true;
+
 // AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));
 
@@ -103,16 +110,28 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "BlogApp V1");
+        c.RoutePrefix = "swagger"; // URL to Swagger
+    });
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseAuthorization();
-
 app.MapControllers();
+//app.MapDefaultControllerRoute();
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

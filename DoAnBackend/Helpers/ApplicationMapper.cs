@@ -8,8 +8,7 @@ namespace DoAnBackend.Helpers
     {
         public ApplicationMapper() 
         {
-            CreateMap<BlogModel, Blog>();
-            CreateMap<CategoryModel, Category>().ReverseMap();
+            CreateMap<ApplicationUser, UserDetailModel>();
         }
     }
 }
