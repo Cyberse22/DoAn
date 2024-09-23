@@ -2,7 +2,7 @@
 {
     public class Nurse : ApplicationUser
     {
-        public ICollection<Appointment> Appointments { get; set; }
-        public ICollection<Invoice> Invoices { get; set; }
+        public ICollection<Appointment>? Appointments { get; set; }
+        public ICollection<Invoice>? Invoices { get; set; }
     }
 }

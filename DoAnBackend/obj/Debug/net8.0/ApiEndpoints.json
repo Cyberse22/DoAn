@@ -3,17 +3,27 @@
     "ContainingType": "DoAnBackend.Controllers.AccountsController",
     "Method": "ChangePassword",
     "RelativePath": "api/Accounts/ChangePassword",
-    "HttpMethod": "POST",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "passwordModel",
+        "Name": "model",
         "Type": "DoAnBackend.Models.PasswordModel",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "DoAnBackend.Models.PasswordModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "DoAnBackend.Controllers.AccountsController",
@@ -29,6 +39,32 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.AccountsController",
+    "Method": "CreateUserByAdmin",
+    "RelativePath": "api/Accounts/CreateByAdmin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DoAnBackend.Models.CreateByAdmin",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.AccountsController",
+    "Method": "GetCurrentUser",
+    "RelativePath": "api/Accounts/GetCurrentUser",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -62,5 +98,108 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
+    "Method": "Cancel",
+    "RelativePath": "api/Appointment/{appointmentId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "appointmentId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnBackend.Models.AppointmentModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
+    "Method": "Confirm",
+    "RelativePath": "api/Appointment/{appointmentId}/confirm",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "appointmentId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "nurseId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnBackend.Models.AppointmentModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
+    "Method": "CreateAppointment",
+    "RelativePath": "api/Appointment/Add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DoAnBackend.Models.AppointmentModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "DoAnBackend.Models.AppointmentModel",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
+    "Method": "GetAll",
+    "RelativePath": "api/Appointment/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[DoAnBackend.Models.AppointmentModel\u002BAppointmentDetails, DoAnBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

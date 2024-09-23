@@ -4,8 +4,6 @@ namespace DoAnBackend.Data
 {
     public class Medicine : BaseEntity
     {
-        [Key]
-        public int id { get; set; }
         [Required]
         public string? Name { get; set; }
         [Required]
@@ -13,7 +11,7 @@ namespace DoAnBackend.Data
         [Required]
         public decimal? Price { get; set; }
 
-        public ICollection<PrescriptionDetail> PrescriptionDetails { get; set; }
-        public ICollection<InvoiceMedicine> InvoiceMedicines { get; set; }
+        public ICollection<PrescriptionDetail>? PrescriptionDetails { get; set; }
+        public ICollection<InvoiceMedicine>? InvoiceMedicines { get; set; }
     }
 }

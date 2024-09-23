@@ -7,37 +7,22 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DoAnBackend.Migrations
 {
     /// <inheritdoc />
-    public partial class NewDb : Migration
+    public partial class NewDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AspNetRoles",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "text", nullable: false),
-                    Name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "text", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetRoles", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetUsers",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "text", nullable: false),
-                    FirstName = table.Column<string>(type: "text", nullable: false),
-                    LastName = table.Column<string>(type: "text", nullable: false),
+                    FirstName = table.Column<string>(type: "text", nullable: true),
+                    LastName = table.Column<string>(type: "text", nullable: true),
                     DateOfBirth = table.Column<DateOnly>(type: "date", nullable: false),
-                    Gender = table.Column<string>(type: "text", nullable: false),
-                    Address = table.Column<string>(type: "text", nullable: false),
-                    Role = table.Column<string>(type: "text", nullable: false),
-                    Discriminator = table.Column<string>(type: "character varying(8)", maxLength: 8, nullable: false),
+                    Gender = table.Column<string>(type: "text", nullable: true),
+                    Address = table.Column<string>(type: "text", nullable: true),
+                    Discriminator = table.Column<string>(type: "character varying(21)", maxLength: 21, nullable: false),
                     Specialization = table.Column<string>(type: "text", nullable: true),
                     LicenseNumber = table.Column<string>(type: "text", nullable: true),
                     UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
@@ -61,99 +46,108 @@ namespace DoAnBackend.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "medicines",
+                name: "Medicines",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Unit = table.Column<string>(type: "text", nullable: false),
                     Price = table.Column<decimal>(type: "numeric", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    UpdateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
                     createdDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     updatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     isActive = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_medicines", x => x.id);
+                    table.PrimaryKey("PK_Medicines", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "services",
+                name: "Services",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Price = table.Column<decimal>(type: "numeric", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    UpdateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
                     createdDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     updatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     isActive = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_services", x => x.Id);
+                    table.PrimaryKey("PK_Services", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetRoleClaims",
+                name: "Appointments",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    RoleId = table.Column<string>(type: "text", nullable: false),
-                    ClaimType = table.Column<string>(type: "text", nullable: true),
-                    ClaimValue = table.Column<string>(type: "text", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
-                        column: x => x.RoleId,
-                        principalTable: "AspNetRoles",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "appointments",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Reason = table.Column<string>(type: "text", nullable: false),
-                    Date = table.Column<DateOnly>(type: "date", nullable: false),
-                    Time = table.Column<TimeSpan>(type: "interval", nullable: false),
-                    Status = table.Column<string>(type: "text", nullable: false),
-                    PatientId = table.Column<string>(type: "text", nullable: false),
-                    NurseId = table.Column<string>(type: "text", nullable: false),
-                    DoctorId = table.Column<string>(type: "text", nullable: false),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Reason = table.Column<string>(type: "text", nullable: true),
+                    Date = table.Column<DateOnly>(type: "date", nullable: true),
+                    Time = table.Column<TimeSpan>(type: "interval", nullable: true),
+                    Status = table.Column<string>(type: "text", nullable: true),
+                    PatientId = table.Column<string>(type: "text", nullable: true),
+                    NurseId = table.Column<string>(type: "text", nullable: true),
+                    DoctorId = table.Column<string>(type: "text", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    UpdateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
                     createdDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     updatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     isActive = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_appointments", x => x.Id);
+                    table.PrimaryKey("PK_Appointments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_appointments_AspNetUsers_DoctorId",
+                        name: "FK_Appointments_AspNetUsers_DoctorId",
                         column: x => x.DoctorId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_appointments_AspNetUsers_NurseId",
+                        name: "FK_Appointments_AspNetUsers_NurseId",
                         column: x => x.NurseId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_appointments_AspNetUsers_PatientId",
+                        name: "FK_Appointments_AspNetUsers_PatientId",
                         column: x => x.PatientId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetRoles",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "text", nullable: false),
+                    Discriminator = table.Column<string>(type: "character varying(21)", maxLength: 21, nullable: false),
+                    RoleName = table.Column<string>(type: "text", nullable: true),
+                    UserId = table.Column<string>(type: "text", nullable: true),
+                    RoleId = table.Column<string>(type: "text", nullable: true),
+                    Name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetRoles", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetRoles_AspNetRoles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "AspNetRoles",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_AspNetRoles_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -198,6 +192,86 @@ namespace DoAnBackend.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AspNetUserTokens",
+                columns: table => new
+                {
+                    UserId = table.Column<string>(type: "text", nullable: false),
+                    LoginProvider = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Value = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserTokens_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Prescriptions",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Diagnsis = table.Column<string>(type: "text", nullable: true),
+                    NextAppointment = table.Column<DateOnly>(type: "date", nullable: true),
+                    PatientId = table.Column<string>(type: "text", nullable: true),
+                    DoctorId = table.Column<string>(type: "text", nullable: true),
+                    AppointmentId = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    UpdateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    createdDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    updatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    isActive = table.Column<bool>(type: "boolean", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Prescriptions", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Prescriptions_Appointments_AppointmentId",
+                        column: x => x.AppointmentId,
+                        principalTable: "Appointments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Prescriptions_AspNetUsers_DoctorId",
+                        column: x => x.DoctorId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Prescriptions_AspNetUsers_PatientId",
+                        column: x => x.PatientId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetRoleClaims",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    RoleId = table.Column<string>(type: "text", nullable: false),
+                    ClaimType = table.Column<string>(type: "text", nullable: true),
+                    ClaimValue = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
@@ -222,213 +296,162 @@ namespace DoAnBackend.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AspNetUserTokens",
+                name: "Invoices",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "text", nullable: false),
-                    LoginProvider = table.Column<string>(type: "text", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Value = table.Column<string>(type: "text", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
-                    table.ForeignKey(
-                        name: "FK_AspNetUserTokens_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "prescriptions",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Diagnsis = table.Column<string>(type: "text", nullable: false),
-                    NextAppointment = table.Column<DateOnly>(type: "date", nullable: true),
-                    PatientId = table.Column<string>(type: "text", nullable: false),
-                    DoctorId = table.Column<string>(type: "text", nullable: false),
-                    AppointmentId = table.Column<int>(type: "integer", nullable: false),
-                    createdDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    updatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    isActive = table.Column<bool>(type: "boolean", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_prescriptions", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_prescriptions_AspNetUsers_DoctorId",
-                        column: x => x.DoctorId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_prescriptions_AspNetUsers_PatientId",
-                        column: x => x.PatientId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_prescriptions_appointments_AppointmentId",
-                        column: x => x.AppointmentId,
-                        principalTable: "appointments",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "invoices",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     TotalAmount = table.Column<decimal>(type: "numeric", nullable: false),
-                    AppointmentId = table.Column<int>(type: "integer", nullable: false),
-                    PrescriptionId = table.Column<int>(type: "integer", nullable: false),
-                    NurseId = table.Column<string>(type: "text", nullable: false),
+                    AppointmentId = table.Column<Guid>(type: "uuid", nullable: false),
+                    PrescriptionId = table.Column<Guid>(type: "uuid", nullable: false),
+                    NurseId = table.Column<string>(type: "text", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    UpdateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
                     createdDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     updatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     isActive = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_invoices", x => x.Id);
+                    table.PrimaryKey("PK_Invoices", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_invoices_AspNetUsers_NurseId",
+                        name: "FK_Invoices_Appointments_AppointmentId",
+                        column: x => x.AppointmentId,
+                        principalTable: "Appointments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Invoices_AspNetUsers_NurseId",
                         column: x => x.NurseId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_invoices_appointments_AppointmentId",
-                        column: x => x.AppointmentId,
-                        principalTable: "appointments",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_invoices_prescriptions_PrescriptionId",
+                        name: "FK_Invoices_Prescriptions_PrescriptionId",
                         column: x => x.PrescriptionId,
-                        principalTable: "prescriptions",
+                        principalTable: "Prescriptions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "prescriptionDetails",
+                name: "PrescriptionDetails",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Quantity = table.Column<int>(type: "integer", nullable: false),
-                    PrescriptionId = table.Column<int>(type: "integer", nullable: false),
-                    MedicineId = table.Column<int>(type: "integer", nullable: false),
+                    PrescriptionId = table.Column<Guid>(type: "uuid", nullable: false),
+                    MedicineId = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    UpdateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
                     createdDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     updatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     isActive = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_prescriptionDetails", x => x.Id);
+                    table.PrimaryKey("PK_PrescriptionDetails", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_prescriptionDetails_medicines_MedicineId",
+                        name: "FK_PrescriptionDetails_Medicines_MedicineId",
                         column: x => x.MedicineId,
-                        principalTable: "medicines",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalTable: "Medicines",
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_prescriptionDetails_prescriptions_PrescriptionId",
+                        name: "FK_PrescriptionDetails_Prescriptions_PrescriptionId",
                         column: x => x.PrescriptionId,
-                        principalTable: "prescriptions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalTable: "Prescriptions",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "invoiceMedicines",
+                name: "InvoiceMedicines",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Quantity = table.Column<int>(type: "integer", nullable: false),
                     Price = table.Column<decimal>(type: "numeric", nullable: false),
                     Discount = table.Column<decimal>(type: "numeric", nullable: false),
-                    InvoiceId = table.Column<int>(type: "integer", nullable: false),
-                    MedicineId = table.Column<int>(type: "integer", nullable: false),
+                    InvoiceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    MedicineId = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    UpdateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
                     createdDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     updatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     isActive = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_invoiceMedicines", x => x.Id);
+                    table.PrimaryKey("PK_InvoiceMedicines", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_invoiceMedicines_invoices_InvoiceId",
+                        name: "FK_InvoiceMedicines_Invoices_InvoiceId",
                         column: x => x.InvoiceId,
-                        principalTable: "invoices",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalTable: "Invoices",
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_invoiceMedicines_medicines_MedicineId",
+                        name: "FK_InvoiceMedicines_Medicines_MedicineId",
                         column: x => x.MedicineId,
-                        principalTable: "medicines",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalTable: "Medicines",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "invoicesServices",
+                name: "InvoicesServices",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Quantity = table.Column<int>(type: "integer", nullable: false),
                     Price = table.Column<decimal>(type: "numeric", nullable: false),
                     Discount = table.Column<decimal>(type: "numeric", nullable: false),
-                    InvoicedId = table.Column<int>(type: "integer", nullable: false),
-                    ServiceId = table.Column<int>(type: "integer", nullable: false),
+                    InvoicedId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ServiceId = table.Column<Guid>(type: "uuid", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    UpdateDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
                     createdDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     updatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     isActive = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_invoicesServices", x => x.Id);
+                    table.PrimaryKey("PK_InvoicesServices", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_invoicesServices_invoices_InvoicedId",
+                        name: "FK_InvoicesServices_Invoices_InvoicedId",
                         column: x => x.InvoicedId,
-                        principalTable: "invoices",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalTable: "Invoices",
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_invoicesServices_services_ServiceId",
+                        name: "FK_InvoicesServices_Services_ServiceId",
                         column: x => x.ServiceId,
-                        principalTable: "services",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalTable: "Services",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_appointments_DoctorId",
-                table: "appointments",
+                name: "IX_Appointments_DoctorId",
+                table: "Appointments",
                 column: "DoctorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_appointments_NurseId",
-                table: "appointments",
+                name: "IX_Appointments_NurseId",
+                table: "Appointments",
                 column: "NurseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_appointments_PatientId",
-                table: "appointments",
+                name: "IX_Appointments_PatientId",
+                table: "Appointments",
                 column: "PatientId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
                 column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetRoles_RoleId",
+                table: "AspNetRoles",
+                column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetRoles_UserId",
+                table: "AspNetRoles",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
@@ -463,66 +486,66 @@ namespace DoAnBackend.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_invoiceMedicines_InvoiceId",
-                table: "invoiceMedicines",
+                name: "IX_InvoiceMedicines_InvoiceId",
+                table: "InvoiceMedicines",
                 column: "InvoiceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_invoiceMedicines_MedicineId",
-                table: "invoiceMedicines",
+                name: "IX_InvoiceMedicines_MedicineId",
+                table: "InvoiceMedicines",
                 column: "MedicineId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_invoices_AppointmentId",
-                table: "invoices",
+                name: "IX_Invoices_AppointmentId",
+                table: "Invoices",
                 column: "AppointmentId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_invoices_NurseId",
-                table: "invoices",
+                name: "IX_Invoices_NurseId",
+                table: "Invoices",
                 column: "NurseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_invoices_PrescriptionId",
-                table: "invoices",
+                name: "IX_Invoices_PrescriptionId",
+                table: "Invoices",
                 column: "PrescriptionId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_invoicesServices_InvoicedId",
-                table: "invoicesServices",
+                name: "IX_InvoicesServices_InvoicedId",
+                table: "InvoicesServices",
                 column: "InvoicedId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_invoicesServices_ServiceId",
-                table: "invoicesServices",
+                name: "IX_InvoicesServices_ServiceId",
+                table: "InvoicesServices",
                 column: "ServiceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_prescriptionDetails_MedicineId",
-                table: "prescriptionDetails",
+                name: "IX_PrescriptionDetails_MedicineId",
+                table: "PrescriptionDetails",
                 column: "MedicineId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_prescriptionDetails_PrescriptionId",
-                table: "prescriptionDetails",
+                name: "IX_PrescriptionDetails_PrescriptionId",
+                table: "PrescriptionDetails",
                 column: "PrescriptionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_prescriptions_AppointmentId",
-                table: "prescriptions",
+                name: "IX_Prescriptions_AppointmentId",
+                table: "Prescriptions",
                 column: "AppointmentId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_prescriptions_DoctorId",
-                table: "prescriptions",
+                name: "IX_Prescriptions_DoctorId",
+                table: "Prescriptions",
                 column: "DoctorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_prescriptions_PatientId",
-                table: "prescriptions",
+                name: "IX_Prescriptions_PatientId",
+                table: "Prescriptions",
                 column: "PatientId");
         }
 
@@ -545,31 +568,31 @@ namespace DoAnBackend.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "invoiceMedicines");
+                name: "InvoiceMedicines");
 
             migrationBuilder.DropTable(
-                name: "invoicesServices");
+                name: "InvoicesServices");
 
             migrationBuilder.DropTable(
-                name: "prescriptionDetails");
+                name: "PrescriptionDetails");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "invoices");
+                name: "Invoices");
 
             migrationBuilder.DropTable(
-                name: "services");
+                name: "Services");
 
             migrationBuilder.DropTable(
-                name: "medicines");
+                name: "Medicines");
 
             migrationBuilder.DropTable(
-                name: "prescriptions");
+                name: "Prescriptions");
 
             migrationBuilder.DropTable(
-                name: "appointments");
+                name: "Appointments");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

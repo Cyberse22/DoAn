@@ -20,8 +20,8 @@ namespace DoAnBackend.Repositories
         private readonly ApplicationDbContext _applicationDbContext;
 
         public AccountRepository(
-            UserManager<ApplicationUser> userManager, 
-            SignInManager<ApplicationUser> signInManager, 
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
             RoleManager<IdentityRole> roleManager,
             ApplicationDbContext applicationDbContext
             )
@@ -39,11 +39,11 @@ namespace DoAnBackend.Repositories
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,
-                UserName = model.UserName,
+                UserName = model.Email,
                 Gender = model.Gender,
-                PhoneNumber = model.PhoneNumer,
+                PhoneNumber = model.PhoneNubmer,
             };
-            
+
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
@@ -59,7 +59,7 @@ namespace DoAnBackend.Repositories
         public async Task<SignInResult> SignInAsync(string email, string password)
         {
             var user = await _userManager.FindByEmailAsync(email);
-            if (user == null) 
+            if (user == null)
             {
                 return SignInResult.Failed;
             }
@@ -88,13 +88,13 @@ namespace DoAnBackend.Repositories
                 Email = model.Email,
                 UserName = model.Email,
                 Gender = model.Gender,
-                PhoneNumber = model.PhoneNumer
+                PhoneNumber = model.PhoneNubmer
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
-            if (result.Succeeded) 
+            if (result.Succeeded)
             {
-                if(!await _roleManager.RoleExistsAsync(StaticEntity.UserRoles.Patient))
+                if (!await _roleManager.RoleExistsAsync(StaticEntity.UserRoles.Patient))
                 {
                     await _roleManager.CreateAsync(new IdentityRole(StaticEntity.UserRoles.Patient));
                 }
@@ -104,7 +104,7 @@ namespace DoAnBackend.Repositories
             return result;
         }
 
-        public async Task<bool> AssignRoleAsync (ApplicationUser user, string role)
+        public async Task<bool> AssignRoleAsync(ApplicationUser user, string role)
         {
             var roleExists = await _roleManager.RoleExistsAsync(role);
             if (!roleExists)
@@ -116,15 +116,60 @@ namespace DoAnBackend.Repositories
             return result.Succeeded;
         }
 
-        public async Task<ApplicationUser> GetUserByIdAsync(string userId)
-        {
-            return null;
-        }
-
         public async Task UpdateUserAsync(ApplicationUser user)
         {
             _applicationDbContext.Entry(user).State = EntityState.Modified;
             await _applicationDbContext.SaveChangesAsync();
+        }
+
+        public async Task<ApplicationUser> GetUserByEmailAsync(string email)
+        {
+            return await _applicationDbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+        }
+
+        public async Task<bool> ChangePasswordAsync(string email, string currentPassword, string newPassword)
+        {
+            var user = await _applicationDbContext.Users.FindAsync(email);
+            if (user == null)
+            {
+                return false;
+            }
+
+            var passwordHasher = new PasswordHasher<ApplicationUser>();
+            var result = passwordHasher.VerifyHashedPassword(user, user.PasswordHash, currentPassword);
+
+            if (result == PasswordVerificationResult.Success)
+            {
+                user.PasswordHash = passwordHasher.HashPassword(user, newPassword);
+                await _applicationDbContext.SaveChangesAsync();
+                return true;
+            }
+
+            return false;
+        }
+
+        public async Task<IdentityResult> CreateUserByAdminAsync(CreateByAdmin model)
+        {
+            var user = new ApplicationUser
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Email = model.Email,
+                UserName = model.Email,
+                Gender = model.Gender,
+                PhoneNumber = model.PhoneNubmer,
+            };
+
+            var result = await _userManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
+            {
+                if (!await _roleManager.RoleExistsAsync(model.Role))
+                {
+                    await _roleManager.CreateAsync(new IdentityRole(model.Role));
+                }
+                await _userManager.AddToRoleAsync(user, model.Role);
+            }
+            return result;
         }
     }
 }

@@ -3,36 +3,24 @@
   "WorkspaceRootPath": "C:\\Code\\DoAn\\DoAnBackend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\data\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:data\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\models\\appointmentmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:models\\appointmentmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\services\\appointmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:services\\appointmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\helpers\\applicationmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:helpers\\applicationmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\repositories\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:repositories\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\repositories\\interface\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:repositories\\interface\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\repositories\\interface\\iaccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:repositories\\interface\\iaccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\controllers\\accountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:controllers\\accountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,112 +30,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ApplicationUser.cs",
-              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Data\\ApplicationUser.cs",
-              "RelativeDocumentMoniker": "Data\\ApplicationUser.cs",
-              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Data\\ApplicationUser.cs",
-              "RelativeToolTip": "Data\\ApplicationUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAUAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-21T18:37:20.625Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAWwBsAAABMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-21T18:31:18.361Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UserRepository.cs",
-              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\UserRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\UserRepository.cs",
-              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\UserRepository.cs",
-              "RelativeToolTip": "Repositories\\UserRepository.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwBYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-21T18:24:00.857Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ApplicationMapper.cs",
-              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Helpers\\ApplicationMapper.cs",
-              "RelativeDocumentMoniker": "Helpers\\ApplicationMapper.cs",
-              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Helpers\\ApplicationMapper.cs",
-              "RelativeToolTip": "Helpers\\ApplicationMapper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-21T18:23:02.19Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "IUserRepository.cs",
-              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\Interface\\IUserRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\Interface\\IUserRepository.cs",
-              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\Interface\\IUserRepository.cs",
-              "RelativeToolTip": "Repositories\\Interface\\IUserRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-21T18:20:56.393Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IAccountRepository.cs",
-              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\Interface\\IAccountRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\Interface\\IAccountRepository.cs",
-              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\Interface\\IAccountRepository.cs",
-              "RelativeToolTip": "Repositories\\Interface\\IAccountRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-21T18:18:49.782Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UserModel.cs",
-              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Models\\UserModel.cs",
-              "RelativeDocumentMoniker": "Models\\UserModel.cs",
-              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Models\\UserModel.cs",
-              "RelativeToolTip": "Models\\UserModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-21T18:16:50.34Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AccountRepository.cs",
-              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\AccountRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\AccountRepository.cs",
-              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\AccountRepository.cs",
-              "RelativeToolTip": "Repositories\\AccountRepository.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAADQAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-21T16:29:59.431Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0174dea2-fdbe-4ef1-8f99-c0beae78880f}"
@@ -155,6 +39,71 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AppointmentModel.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Models\\AppointmentModel.cs",
+              "RelativeDocumentMoniker": "Models\\AppointmentModel.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Models\\AppointmentModel.cs",
+              "RelativeToolTip": "Models\\AppointmentModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-23T19:10:54.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ApplicationMapper.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Helpers\\ApplicationMapper.cs",
+              "RelativeDocumentMoniker": "Helpers\\ApplicationMapper.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Helpers\\ApplicationMapper.cs",
+              "RelativeToolTip": "Helpers\\ApplicationMapper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-23T19:09:04.742Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AppointmentController.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Controllers\\AppointmentController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AppointmentController.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Controllers\\AppointmentController.cs",
+              "RelativeToolTip": "Controllers\\AppointmentController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAvwCkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-23T19:04:48.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AppointmentService.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Services\\AppointmentService.cs",
+              "RelativeDocumentMoniker": "Services\\AppointmentService.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Services\\AppointmentService.cs",
+              "RelativeToolTip": "Services\\AppointmentService.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAnwDQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-23T19:04:48.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AccountsController.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Controllers\\AccountsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountsController.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Controllers\\AccountsController.cs",
+              "RelativeToolTip": "Controllers\\AccountsController.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAQwDgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-23T19:04:36.477Z",
+              "EditorCaption": ""
             }
           ]
         }

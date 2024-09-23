@@ -30,6 +30,9 @@ namespace DoAnBackend.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
 
+                    b.Property<string>("Address")
+                        .HasColumnType("text");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("text");
@@ -50,14 +53,12 @@ namespace DoAnBackend.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Gender")
                         .HasColumnType("text");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<bool>("LockoutEnabled")
@@ -111,37 +112,40 @@ namespace DoAnBackend.Migrations
 
             modelBuilder.Entity("DoAnBackend.Data.Appointment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("uuid");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-                    b.Property<DateOnly>("Date")
+                    b.Property<DateOnly?>("Date")
                         .HasColumnType("date");
 
                     b.Property<string>("DoctorId")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("NurseId")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("PatientId")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Reason")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Status")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<TimeSpan>("Time")
+                    b.Property<TimeSpan?>("Time")
                         .HasColumnType("interval");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .ValueGeneratedOnUpdate()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<DateTime>("createdDate")
                         .HasColumnType("timestamp with time zone");
@@ -165,24 +169,31 @@ namespace DoAnBackend.Migrations
 
             modelBuilder.Entity("DoAnBackend.Data.Invoice", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("uuid");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<Guid>("AppointmentId")
+                        .HasColumnType("uuid");
 
-                    b.Property<int>("AppointmentId")
-                        .HasColumnType("integer");
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<string>("NurseId")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("PrescriptionId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("PrescriptionId")
+                        .HasColumnType("uuid");
 
                     b.Property<decimal>("TotalAmount")
                         .HasColumnType("numeric");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .ValueGeneratedOnUpdate()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<DateTime>("createdDate")
                         .HasColumnType("timestamp with time zone");
@@ -208,26 +219,34 @@ namespace DoAnBackend.Migrations
 
             modelBuilder.Entity("DoAnBackend.Data.InvoiceMedicine", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("uuid");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<decimal>("Discount")
                         .HasColumnType("numeric");
 
-                    b.Property<int>("InvoiceId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("InvoiceId")
+                        .HasColumnType("uuid");
 
-                    b.Property<int>("MedicineId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("MedicineId")
+                        .HasColumnType("uuid");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .ValueGeneratedOnUpdate()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<DateTime>("createdDate")
                         .HasColumnType("timestamp with time zone");
@@ -249,17 +268,20 @@ namespace DoAnBackend.Migrations
 
             modelBuilder.Entity("DoAnBackend.Data.InvoiceService", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("uuid");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<decimal>("Discount")
                         .HasColumnType("numeric");
 
-                    b.Property<int>("InvoicedId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("InvoicedId")
+                        .HasColumnType("uuid");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
@@ -267,8 +289,13 @@ namespace DoAnBackend.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ServiceId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("ServiceId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .ValueGeneratedOnUpdate()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<DateTime>("createdDate")
                         .HasColumnType("timestamp with time zone");
@@ -290,11 +317,14 @@ namespace DoAnBackend.Migrations
 
             modelBuilder.Entity("DoAnBackend.Data.Medicine", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("uuid");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -308,6 +338,11 @@ namespace DoAnBackend.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<DateTime>("UpdateDate")
+                        .ValueGeneratedOnUpdate()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
                     b.Property<DateTime>("createdDate")
                         .HasColumnType("timestamp with time zone");
 
@@ -317,36 +352,41 @@ namespace DoAnBackend.Migrations
                     b.Property<DateTime>("updatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Medicines");
                 });
 
             modelBuilder.Entity("DoAnBackend.Data.Prescription", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("uuid");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<Guid>("AppointmentId")
+                        .HasColumnType("uuid");
 
-                    b.Property<int>("AppointmentId")
-                        .HasColumnType("integer");
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<string>("Diagnsis")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("DoctorId")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateOnly?>("NextAppointment")
                         .HasColumnType("date");
 
                     b.Property<string>("PatientId")
-                        .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .ValueGeneratedOnUpdate()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<DateTime>("createdDate")
                         .HasColumnType("timestamp with time zone");
@@ -371,20 +411,28 @@ namespace DoAnBackend.Migrations
 
             modelBuilder.Entity("DoAnBackend.Data.PrescriptionDetail", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("uuid");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-                    b.Property<int>("MedicineId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("MedicineId")
+                        .HasColumnType("uuid");
 
-                    b.Property<int>("PrescriptionId")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("PrescriptionId")
+                        .HasColumnType("uuid");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .ValueGeneratedOnUpdate()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<DateTime>("createdDate")
                         .HasColumnType("timestamp with time zone");
@@ -406,11 +454,14 @@ namespace DoAnBackend.Migrations
 
             modelBuilder.Entity("DoAnBackend.Data.Service", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("uuid");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -418,6 +469,11 @@ namespace DoAnBackend.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .ValueGeneratedOnUpdate()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<DateTime>("createdDate")
                         .HasColumnType("timestamp with time zone");
@@ -579,11 +635,9 @@ namespace DoAnBackend.Migrations
                     b.HasBaseType("DoAnBackend.Data.ApplicationUser");
 
                     b.Property<string>("LicenseNumber")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Specialization")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasDiscriminator().HasValue("Doctor");
@@ -634,21 +688,17 @@ namespace DoAnBackend.Migrations
                 {
                     b.HasOne("DoAnBackend.Data.Doctor", "Doctor")
                         .WithMany("Appointments")
-                        .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DoctorId");
 
                     b.HasOne("DoAnBackend.Data.Nurse", "Nurse")
                         .WithMany("Appointments")
                         .HasForeignKey("NurseId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("DoAnBackend.Data.Patient", "Patient")
                         .WithMany("Appointments")
                         .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Doctor");
 
@@ -662,20 +712,16 @@ namespace DoAnBackend.Migrations
                     b.HasOne("DoAnBackend.Data.Appointment", "Appointment")
                         .WithOne("Invoice")
                         .HasForeignKey("DoAnBackend.Data.Invoice", "AppointmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("DoAnBackend.Data.Nurse", "Nurse")
                         .WithMany("Invoices")
-                        .HasForeignKey("NurseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("NurseId");
 
                     b.HasOne("DoAnBackend.Data.Prescription", "Prescription")
                         .WithOne("Invoice")
                         .HasForeignKey("DoAnBackend.Data.Invoice", "PrescriptionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Appointment");
 
@@ -688,15 +734,11 @@ namespace DoAnBackend.Migrations
                 {
                     b.HasOne("DoAnBackend.Data.Invoice", "Invoice")
                         .WithMany("InvoiceMedicines")
-                        .HasForeignKey("InvoiceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("InvoiceId");
 
                     b.HasOne("DoAnBackend.Data.Medicine", "Medicine")
                         .WithMany("InvoiceMedicines")
-                        .HasForeignKey("MedicineId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MedicineId");
 
                     b.Navigation("Invoice");
 
@@ -707,15 +749,11 @@ namespace DoAnBackend.Migrations
                 {
                     b.HasOne("DoAnBackend.Data.Invoice", "Invoice")
                         .WithMany("InvoiceServices")
-                        .HasForeignKey("InvoicedId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("InvoicedId");
 
                     b.HasOne("DoAnBackend.Data.Service", "Service")
                         .WithMany("InvoiceServices")
-                        .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ServiceId");
 
                     b.Navigation("Invoice");
 
@@ -727,20 +765,17 @@ namespace DoAnBackend.Migrations
                     b.HasOne("DoAnBackend.Data.Appointment", "Appointment")
                         .WithOne("Prescription")
                         .HasForeignKey("DoAnBackend.Data.Prescription", "AppointmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("DoAnBackend.Data.Doctor", "Doctor")
                         .WithMany("Prescriptions")
                         .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("DoAnBackend.Data.Patient", "Patient")
                         .WithMany("Prescriptions")
                         .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Appointment");
 
@@ -753,15 +788,11 @@ namespace DoAnBackend.Migrations
                 {
                     b.HasOne("DoAnBackend.Data.Medicine", "Medicine")
                         .WithMany("PrescriptionDetails")
-                        .HasForeignKey("MedicineId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MedicineId");
 
                     b.HasOne("DoAnBackend.Data.Prescription", "Prescription")
                         .WithMany("PrescriptionDetails")
-                        .HasForeignKey("PrescriptionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PrescriptionId");
 
                     b.Navigation("Medicine");
 
@@ -826,7 +857,7 @@ namespace DoAnBackend.Migrations
                         .HasForeignKey("RoleId");
 
                     b.HasOne("DoAnBackend.Data.ApplicationUser", "User")
-                        .WithMany()
+                        .WithMany("UserRoles")
                         .HasForeignKey("UserId");
 
                     b.Navigation("Role");
@@ -834,13 +865,16 @@ namespace DoAnBackend.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("DoAnBackend.Data.ApplicationUser", b =>
+                {
+                    b.Navigation("UserRoles");
+                });
+
             modelBuilder.Entity("DoAnBackend.Data.Appointment", b =>
                 {
-                    b.Navigation("Invoice")
-                        .IsRequired();
+                    b.Navigation("Invoice");
 
-                    b.Navigation("Prescription")
-                        .IsRequired();
+                    b.Navigation("Prescription");
                 });
 
             modelBuilder.Entity("DoAnBackend.Data.Invoice", b =>
@@ -859,8 +893,7 @@ namespace DoAnBackend.Migrations
 
             modelBuilder.Entity("DoAnBackend.Data.Prescription", b =>
                 {
-                    b.Navigation("Invoice")
-                        .IsRequired();
+                    b.Navigation("Invoice");
 
                     b.Navigation("PrescriptionDetails");
                 });

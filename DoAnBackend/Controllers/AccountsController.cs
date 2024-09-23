@@ -1,7 +1,11 @@
-﻿using DoAnBackend.Models;
+﻿using AutoMapper;
+using DoAnBackend.Data;
+using DoAnBackend.Helpers;
+using DoAnBackend.Models;
 using DoAnBackend.Services.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.Security.Claims;
@@ -12,12 +16,18 @@ namespace DoAnBackend.Controllers
     [ApiController]
     public class AccountsController : ControllerBase
     {
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly IAccountService _accountService;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public AccountsController(IAccountService service, IHttpContextAccessor httpContextAccessor)
+        private readonly IMapper _mapper;
+        
+
+        public AccountsController(IAccountService service, UserManager<ApplicationUser> userManager, IHttpContextAccessor httpContextAccessor, IMapper mapper)
         {
             _accountService = service;
+            _userManager = userManager;
             _httpContextAccessor = httpContextAccessor;
+            _mapper = mapper;
         }
 
         [HttpPost("SignUp")]
@@ -43,7 +53,7 @@ namespace DoAnBackend.Controllers
             return Ok(result);
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpPost("CreateAdmin")]
         public async Task<IActionResult> CreateAdmin([FromBody] SignUpModel model)
         {
@@ -55,20 +65,113 @@ namespace DoAnBackend.Controllers
             return BadRequest(result.Errors);
         }
 
-        [HttpPost("ChangePassword")]
-        public async Task<IActionResult> ChangePassword(PasswordModel passwordModel)
+        [HttpPost("CreateByAdmin")]
+        public async Task<IActionResult> CreateUserByAdmin([FromBody] CreateByAdmin model)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var result = await _accountService.ChangePasswordAsync(passwordModel);
-            if (result)
+            var result = await _accountService.CreateUserByAdminAsync(model);
+            if (result.Succeeded)
             {
-                return Ok(new { message = "Paasword changed successfully" });
+                return Ok("User created successfully.");
             }
-            return BadRequest(new { message = "Failed to change password" });
+
+            return BadRequest(result.Errors);
+        }
+
+        //[Authorize]
+        //[HttpGet("GetCurrentUser")]
+        //public async Task<ActionResult<CurrentUserModel>> GetCurrentUser() 
+        //{
+        //    var email = User.FindFirst(ClaimTypes.Email)?.Value;
+
+        //    if (string.IsNullOrEmpty(email))
+        //    {
+        //        return NotFound(email); 
+        //    }
+
+        //    var userId = await _accountService.GetUserByEmailAsync(email);
+
+        //    var currentUser = new CurrentUserModel
+        //    {
+        //        Id = userId,
+        //        Email = email
+        //    };
+        //    currentUser.Email = email;
+        //    currentUser.Id = userId;
+        //    return Ok(currentUser);
+        //}
+
+        //private async Task<CurrentUserModel> CreateCurrentUserModel()
+        //{
+        //    var email = User.FindFirst(ClaimTypes.Email)?.Value;
+
+        //    if (string.IsNullOrEmpty(email))
+        //    {
+        //        throw new InvalidOperationException("Không tìm thấy email trong claims."); // Ném exception nếu không tìm thấy email
+        //    }
+
+        //    var userId = await _accountService.GetUserByEmailAsync(email);
+
+        //    if (string.IsNullOrEmpty(userId))
+        //    {
+        //        throw new InvalidOperationException("Người dùng không tìm thấy."); // Ném exception nếu không tìm thấy người dùng
+        //    }
+
+        //    return new CurrentUserModel
+        //    {
+        //        Id = userId,
+        //        Email = email
+        //    };
+        //}
+
+        [Authorize]
+        [HttpGet("GetCurrentUser")]
+        public async Task<IActionResult> GetCurrentUser()
+        {
+            var currentUser = await Helper.CreateCurrentUserModel(_accountService, User);
+
+            if (currentUser == null)
+            {
+                return NotFound("Người dùng không tìm thấy.");
+            }
+
+            return Ok(currentUser);
+        }
+
+        [Authorize]
+        [HttpPut("ChangePassword")]
+        public async Task<ActionResult<PasswordModel>> ChangePassword(PasswordModel model) 
+        {
+            if (model == null)
+            {
+                return BadRequest("Mẫu không hợp lệ.");
+            }
+
+            var currentUser = await Helper.CreateCurrentUserModel(_accountService, User);
+
+            if (currentUser == null)
+            {
+                return Unauthorized();
+            }
+
+            var userId = currentUser.Id;
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized();
+            }
+
+            var result = await _accountService.ChangePasswordAsync(userId, model.CurrentPassword, model.NewPassword);
+            if (!result)
+            {
+                return BadRequest("Mật khẩu hiện tại không đúng hoặc có lỗi xảy ra.");
+            }
+
+            return Ok("Mật khẩu đã được thay đổi thành công.");
         }
     }
 }

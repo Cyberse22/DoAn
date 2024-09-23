@@ -1,4 +1,8 @@
-﻿namespace DoAnBackend.Helpers
+﻿using DoAnBackend.Models;
+using DoAnBackend.Services.Interface;
+using System.Security.Claims;
+
+namespace DoAnBackend.Helpers
 {
     public static class StaticEntity
     {
@@ -26,4 +30,36 @@
             public static string PreferNotToSay = "Prefer not to say";
         }
     }
+
+    public static class Helper
+    {
+        public static async Task<CurrentUserModel> CreateCurrentUserModel(IAccountService _accountService, ClaimsPrincipal user)
+        {
+            var email = user.FindFirst(ClaimTypes.Email)?.Value;
+
+            if (string.IsNullOrEmpty(email))
+            {
+                throw new InvalidOperationException("Không tìm thấy email trong claims."); // Ném exception nếu không tìm thấy email
+            }
+
+            var userId = await _accountService.GetUserByEmailAsync(email);
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                throw new InvalidOperationException("Người dùng không tìm thấy."); // Ném exception nếu không tìm thấy người dùng
+            }
+
+            return new CurrentUserModel
+            {
+                Id = userId,
+                Email = email
+            };
+        }
+
+        internal static object CreateCurrentUserModel(object accountService, ClaimsPrincipal user)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    
 }

@@ -1,5 +1,6 @@
 ﻿using DoAnBackend.Data;
 using DoAnBackend.Models;
+using DoAnBackend.Repositories;
 using DoAnBackend.Repositories.Interface;
 using DoAnBackend.Services.Interface;
 using Microsoft.AspNetCore.Identity;
@@ -17,6 +18,7 @@ namespace DoAnBackend.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        //private readonly ILogger _logger;
 
         public AccountService(IAccountRepository accountRepository, IConfiguration configuration, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IHttpContextAccessor httpContextAccessor)
         {
@@ -103,32 +105,20 @@ namespace DoAnBackend.Services
             return result.Succeeded;
         }
 
-        public async Task<IdentityUser> GetCurrentUserAsync()
+        public async Task<string> GetUserByEmailAsync(string email)
         {
-            var userId = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userId == null)
-            {
-                return null;
-            }
-            return await _accountRepository.GetUserByIdAsync(userId);
+            var user = await _accountRepository.GetUserByEmailAsync(email);
+            return user?.Id;
         }
 
-        public async Task<bool> ChangePasswordAsync(PasswordModel passwordModel)
+        public async Task<bool> ChangePasswordAsync(string email, string currentPassword, string newPassword)
         {
-            var user = await GetCurrentUserAsync();
-            if (user == null) 
-            {
-                return false;
-            }
+            return await _accountRepository.ChangePasswordAsync(email, currentPassword, newPassword);
+        }
 
-            var result = await _userManager.ChangePasswordAsync((ApplicationUser)user, passwordModel.CurrentPassword, passwordModel.NewPassword);
-            if (result.Succeeded) 
-            {
-                await _accountRepository.UpdateUserAsync((ApplicationUser)user);
-                return true;
-            }
-
-            return false;
+        public async Task<IdentityResult> CreateUserByAdminAsync(CreateByAdmin model)
+        {
+            return await _accountRepository.CreateUserByAdminAsync(model);
         }
     }
 }

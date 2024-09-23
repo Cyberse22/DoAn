@@ -1,4 +1,4 @@
-using DoAnBackend;
+﻿using DoAnBackend;
 using DoAnBackend.Data;
 using DoAnBackend.Repositories;
 using DoAnBackend.Repositories.Interface;
@@ -13,17 +13,27 @@ using System.Text;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using dotenv.net;
+using DoAnBackend.Helpers;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(connectionString));
+{
+    options.UseNpgsql(connectionString)
+           .EnableSensitiveDataLogging() // Bật logging dữ liệu nhạy cảm
+           .LogTo(Console.WriteLine, LogLevel.Information); // Log thông tin ra console
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+        .AddJsonOptions(options =>
+         {
+             options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+         });
 builder.Services.AddCoreAdmin();
 builder.Services.AddHttpContextAccessor();
 
@@ -69,17 +79,21 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<IAppointmentService, AppointmentService>();
+builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
 
 // Jwt, Authentication an Authorization
-builder.Services.AddAuthentication(options => {
+builder.Services.AddAuthentication(options =>
+{
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options => {
+}).AddJwtBearer(options =>
+{
     options.SaveToken = true;
     options.RequireHttpsMetadata = false;
     options.TokenValidationParameters = new
-      Microsoft.IdentityModel.Tokens.TokenValidationParameters
+      TokenValidationParameters
     {
         ValidateIssuer = true,
         ValidateAudience = true,
@@ -89,7 +103,7 @@ builder.Services.AddAuthentication(options => {
     };
 });
 
-builder.Services.AddAuthorization(options => 
+builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole("Admin"));
 });
@@ -104,6 +118,7 @@ cloudinary.Api.Secure = true;
 
 // AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddAutoMapper(typeof(ApplicationMapper));
 
 var app = builder.Build();
 

@@ -5,10 +5,12 @@ namespace DoAnBackend.Data
 {
     public class ApplicationUser : IdentityUser
     {
-        public string FirstName { get; set; } = null!;
-        public string LastName { get; set; } = null!;
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
         public DateOnly DateOfBirth { get; set; }
         public string? Gender { get; set; }
+        public string? Address { get; set; }
+        public virtual ICollection<ApplicationUserRole>? UserRoles { get; set; }
     }
     public class ApplicationRole : IdentityRole 
     { 

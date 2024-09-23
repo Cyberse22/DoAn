@@ -11,7 +11,9 @@ namespace DoAnBackend.Repositories.Interface
         Task<IdentityResult> SignUpAsync(SignUpModel model);
         Task<IdentityResult> CreateAdminAsync(SignUpModel model);
         Task<bool> AssignRoleAsync(ApplicationUser user, string role);
-        Task<ApplicationUser> GetUserByIdAsync(string userId);
+        Task<ApplicationUser> GetUserByEmailAsync(string email);
         Task UpdateUserAsync(ApplicationUser user);
+        Task<bool> ChangePasswordAsync(string email, string currentPassword, string newPassword);
+        Task<IdentityResult> CreateUserByAdminAsync(CreateByAdmin model);
     }
 }
