@@ -12,7 +12,8 @@ namespace DoAnBackend.Services.Interface
         Task<bool> AssignRoleAsync(ApplicationUser user, string role);
         Task<string> GetUserByEmailAsync(string email);
         Task<bool> ChangePasswordAsync(string email, string currentPassword, string newPassword);
-        Task<IdentityResult> CreateUserByAdminAsync(CreateByAdmin model);
-
+        Task<IdentityResult> CreateUserByAdminAsync(CreateByAdmin model);    
+        Task<CurrentUserDetailModel> GetUserDetailsByIdAndEmailAsync(string userId, string email);
+        Task<CurrentUserDetailModel?> GetUserDetailsByEmailAsync(string email);
     }
 }

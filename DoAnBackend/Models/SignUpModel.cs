@@ -7,10 +7,13 @@ namespace DoAnBackend.Models
     {
         [Required] public string FirstName { get; set; } = null!;
         [Required] public string LastName { get; set; } = null!;
-        public DateOnly DateOfBirth { get; set; }
+
+        [DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "dd/MM/yyyy", ApplyFormatInEditMode = true)]
+        public DateTime DateOfBirth { get; set; }
         public string Gender { get; set; } = null!;
         [Required, EmailAddress] public string Email { get; set; } = null!;
-        public string? PhoneNubmer {  get; set; }
+        public string? PhoneNumber {  get; set; }
         [Required] public string Password { get; set; } = null!;
         [Required, Compare("Password")] public string ConfirmPassword { get; set; } = null!;
     }

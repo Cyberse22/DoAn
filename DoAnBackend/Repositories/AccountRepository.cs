@@ -41,7 +41,7 @@ namespace DoAnBackend.Repositories
                 Email = model.Email,
                 UserName = model.Email,
                 Gender = model.Gender,
-                PhoneNumber = model.PhoneNubmer,
+                PhoneNumber = model.PhoneNumber,
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
@@ -88,7 +88,7 @@ namespace DoAnBackend.Repositories
                 Email = model.Email,
                 UserName = model.Email,
                 Gender = model.Gender,
-                PhoneNumber = model.PhoneNubmer
+                PhoneNumber = model.PhoneNumber
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
@@ -157,19 +157,63 @@ namespace DoAnBackend.Repositories
                 Email = model.Email,
                 UserName = model.Email,
                 Gender = model.Gender,
-                PhoneNumber = model.PhoneNubmer,
+                PhoneNumber = model.PhoneNumber,
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                if (!await _roleManager.RoleExistsAsync(model.Role))
+                string role = model.Role switch
                 {
-                    await _roleManager.CreateAsync(new IdentityRole(model.Role));
+                    "Nurse" => StaticEntity.UserRoles.Nurse,
+                    "Doctor" => StaticEntity.UserRoles.Doctor,
+                    _ => throw new ArgumentException("Invalid role. Must be either 'Nurse' or 'Doctor'.")
+                };
+                if (!await _roleManager.RoleExistsAsync(role))
+                {
+                    await _roleManager.CreateAsync(new IdentityRole(role));
                 }
                 await _userManager.AddToRoleAsync(user, model.Role);
             }
             return result;
+        }
+
+        public async Task<CurrentUserDetailModel> GetUserDetailsByIdAndEmailAsync(string userId, string email)
+        {
+            var user = await (from u in _applicationDbContext.Users
+                            join ur in _applicationDbContext.UserRoles on u.Id equals ur.UserId
+                            join r in _applicationDbContext.Roles on ur.RoleId equals r.Id
+                            where u.Id == userId && u.Email == email
+                            select new  CurrentUserDetailModel
+                            {
+                                Id = u.Id,
+                                Email = u.Email,
+                                FirstName = u.FirstName,
+                                LastName = u.LastName,
+                                PhoneNumber = u.PhoneNumber,
+                                Gender = u.Gender,
+                                Role = r.Name
+                            }).FirstOrDefaultAsync();
+            return user;
+        }
+
+        public async Task<CurrentUserDetailModel> GetAppointmentsByPatientEmailAsync(string email)
+        {
+            var user = await (from u in _applicationDbContext.Users
+                              join ur in _applicationDbContext.UserRoles on u.Id equals ur.UserId
+                              join r in _applicationDbContext.Roles on ur.RoleId equals r.Id
+                              where u.Email == email
+                              select new CurrentUserDetailModel
+                              {
+                                  Id = u.Id,
+                                  Email = u.Email,
+                                  FirstName = u.FirstName,
+                                  LastName = u.LastName,
+                                  PhoneNumber = u.PhoneNumber,
+                                  Gender = u.Gender,
+                                  Role = r.Name 
+                              }).FirstOrDefaultAsync();
+            return user;
         }
     }
 }

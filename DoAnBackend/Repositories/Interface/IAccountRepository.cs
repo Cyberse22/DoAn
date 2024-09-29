@@ -15,5 +15,7 @@ namespace DoAnBackend.Repositories.Interface
         Task UpdateUserAsync(ApplicationUser user);
         Task<bool> ChangePasswordAsync(string email, string currentPassword, string newPassword);
         Task<IdentityResult> CreateUserByAdminAsync(CreateByAdmin model);
+        Task<CurrentUserDetailModel> GetUserDetailsByIdAndEmailAsync(string userId, string email);
+        Task<CurrentUserDetailModel> GetAppointmentsByPatientEmailAsync(string email);
     }
 }

@@ -37,8 +37,8 @@ namespace DoAnBackend.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("text");
 
-                    b.Property<DateOnly>("DateOfBirth")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
@@ -116,16 +116,19 @@ namespace DoAnBackend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<DateOnly?>("AppointmentDate")
+                        .HasColumnType("date");
+
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-                    b.Property<DateOnly?>("Date")
-                        .HasColumnType("date");
-
                     b.Property<string>("DoctorId")
                         .HasColumnType("text");
+
+                    b.Property<int>("Number")
+                        .HasColumnType("integer");
 
                     b.Property<string>("NurseId")
                         .HasColumnType("text");
@@ -138,9 +141,6 @@ namespace DoAnBackend.Migrations
 
                     b.Property<string>("Status")
                         .HasColumnType("text");
-
-                    b.Property<TimeSpan?>("Time")
-                        .HasColumnType("interval");
 
                     b.Property<DateTime>("UpdateDate")
                         .ValueGeneratedOnUpdate()
@@ -194,6 +194,9 @@ namespace DoAnBackend.Migrations
                         .ValueGeneratedOnUpdate()
                         .HasColumnType("timestamp with time zone")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.Property<string>("WalletType")
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("createdDate")
                         .HasColumnType("timestamp with time zone");
@@ -327,15 +330,12 @@ namespace DoAnBackend.Migrations
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<decimal?>("Price")
-                        .IsRequired()
                         .HasColumnType("numeric");
 
                     b.Property<string>("Unit")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("UpdateDate")

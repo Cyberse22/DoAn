@@ -1,4 +1,5 @@
-﻿using DoAnBackend.Models;
+﻿using DoAnBackend.Data;
+using DoAnBackend.Models;
 using DoAnBackend.Services.Interface;
 using System.Security.Claims;
 
@@ -43,23 +44,29 @@ namespace DoAnBackend.Helpers
             }
 
             var userId = await _accountService.GetUserByEmailAsync(email);
-
+            
             if (string.IsNullOrEmpty(userId))
             {
                 throw new InvalidOperationException("Người dùng không tìm thấy."); // Ném exception nếu không tìm thấy người dùng
             }
+            
+            var userDetails = await _accountService.GetUserDetailsByIdAndEmailAsync(userId, email);
 
-            return new CurrentUserModel
+            if (userDetails == null)
+            {
+                throw new InvalidOperationException("Không tìm thấy thông tin người dùng.");
+            }
+
+            return new CurrentUserDetailModel
             {
                 Id = userId,
-                Email = email
+                Email = userDetails.Email,
+                FirstName = userDetails.FirstName,
+                LastName = userDetails.LastName,
+                PhoneNumber = userDetails.PhoneNumber,
+                Role = userDetails.Role,
+                Gender = userDetails.Gender,
             };
         }
-
-        internal static object CreateCurrentUserModel(object accountService, ClaimsPrincipal user)
-        {
-            throw new NotImplementedException();
-        }
     }
-    
 }

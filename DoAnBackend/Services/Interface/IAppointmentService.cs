@@ -1,14 +1,19 @@
-﻿using DoAnBackend.Models;
-using System.Security.Claims;
+﻿using DoAnBackend.Data;
+using DoAnBackend.Models;
 
 namespace DoAnBackend.Services.Interface
 {
     public interface IAppointmentService
     {
-        Task<AppointmentModel> CreateAppointment(AppointmentModel model, ClaimsPrincipal user);
-        Task<AppointmentModel> UpdateAppointment(string appointmentId);
-        Task<AppointmentModel> ConfirmAppointment(string appointmentId, string NurseId);
-        Task<IEnumerable<AppointmentModel.AppointmentDetails>> GetAllAppointments(); 
+        Task<AppointmentModel?> GetAppointmentByIdAsync(Guid id);
+        Task<List<AppointmentModel>> GetAppointmentsByDateAsync(DateOnly date);
+        Task<Appointment> CreateAppointmentAsync(AppointmentModel.CreateAppointmentModel model, string patientId);
+        Task ConfirmAppointmentAsync(Guid id, string nurseId);
+        Task CancelAppointmentAsync(Guid id, string userId);
+        Task<int> GenerateAppointmentNumber(DateOnly date);
+        Task<List<Appointment>> GetAllAsync();
+        Task<List<AppointmentModel>> GetAppointmentsByPatientEmailAsync(string email);
+        Task<IEnumerable<Appointment>> GetPatientHistoryAsync(string patientEmail, DateOnly startDate, DateOnly endDate);
 
     }
 }

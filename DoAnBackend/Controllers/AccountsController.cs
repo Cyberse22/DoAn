@@ -50,6 +50,7 @@ namespace DoAnBackend.Controllers
             {
                 return Unauthorized();
             }
+
             return Ok(result);
         }
 
@@ -140,6 +141,51 @@ namespace DoAnBackend.Controllers
             }
 
             return Ok(currentUser);
+        }
+
+        [Authorize]
+        [HttpGet("GetCurrentUser2")]
+        public async Task<IActionResult> GetCurrentUser2()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+            {
+                return Unauthorized();
+            }
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null) 
+            {
+                return NotFound("User Not Found");
+            }
+            var currentUser = new
+            {
+                user.Email,
+                user.FirstName, 
+                user.LastName,
+                user.PhoneNumber
+            };
+            return Ok(currentUser);
+        }
+
+        [Authorize]
+        [HttpGet("GetUserByEmail")]
+        public async Task<IActionResult> GetUserByEmail(string email)
+        {
+            var user = await _accountService.GetUserByEmailAsync(email);
+            if (user == null)
+            {
+                return NotFound("Not have Email");
+            }
+            var userEmail = await _userManager.FindByEmailAsync(email);
+            var getUser = new
+            {   
+                userEmail.Id,
+                userEmail.Email,
+                userEmail.FirstName,
+                userEmail.LastName,
+                userEmail.PhoneNumber
+            };
+            return Ok(getUser);
         }
 
         [Authorize]

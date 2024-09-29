@@ -38,7 +38,7 @@ namespace DoAnBackend.Services
             }
 
             var token = GenerateJwtToken(model.Email);
-            return token;
+            return await token;
         }
 
         public async Task<IdentityResult> SignUpAsync(SignUpModel model)
@@ -46,11 +46,18 @@ namespace DoAnBackend.Services
             return await _accountRepository.SignUpAsync(model);
         }
 
-        private string GenerateJwtToken(string email)
+        private async Task<string> GenerateJwtToken(string email)
         {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                throw new UnauthorizedAccessException("User not found.");
+            }
             var authClaims = new List<Claim>
             {
+                new Claim(ClaimTypes.NameIdentifier, user.Id),
                 new Claim(ClaimTypes.Email, email),
+                new Claim(ClaimTypes.Name, user.FirstName + " " + user.LastName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
@@ -119,6 +126,16 @@ namespace DoAnBackend.Services
         public async Task<IdentityResult> CreateUserByAdminAsync(CreateByAdmin model)
         {
             return await _accountRepository.CreateUserByAdminAsync(model);
+        }
+
+        public async Task<CurrentUserDetailModel> GetUserDetailsByIdAndEmailAsync(string userId, string email)
+        {
+            return await _accountRepository.GetUserDetailsByIdAndEmailAsync(userId, email);
+        }
+
+        public async Task<CurrentUserDetailModel?> GetUserDetailsByEmailAsync(string email)
+        {
+            return await _accountRepository.GetAppointmentsByPatientEmailAsync(email);
         }
     }
 }

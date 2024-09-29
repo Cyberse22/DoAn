@@ -19,5 +19,6 @@ namespace DoAnBackend.Data
 
         public ICollection<InvoiceService>? InvoiceServices { get; set; }
         public ICollection<InvoiceMedicine>? InvoiceMedicines { get; set; }
+        public string? WalletType { get; set; }
     }
 }

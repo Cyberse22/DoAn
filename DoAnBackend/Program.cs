@@ -11,10 +11,9 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using CloudinaryDotNet;
-using CloudinaryDotNet.Actions;
-using dotenv.net;
 using DoAnBackend.Helpers;
 using System.Text.Json;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -81,6 +80,10 @@ builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 builder.Services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+builder.Services.AddScoped<IMedicineRepository, MedicineRepository>();
+builder.Services.AddScoped<IMedicineService, MedicineService>();
+builder.Services.AddScoped<IPrescriptionRepository, PrescriptionRepository>();
+builder.Services.AddScoped<IPrescriptionService, PrescriptionService>();
 
 // Jwt, Authentication an Authorization
 builder.Services.AddAuthentication(options =>
@@ -92,14 +95,15 @@ builder.Services.AddAuthentication(options =>
 {
     options.SaveToken = true;
     options.RequireHttpsMetadata = false;
-    options.TokenValidationParameters = new
-      TokenValidationParameters
+    options.TokenValidationParameters = new TokenValidationParameters
     {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"])),
         ValidateIssuer = true,
         ValidateAudience = true,
-        ValidAudience = builder.Configuration["JWT:ValidAudience"],
         ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:Secret"]))
+        ValidAudience = builder.Configuration["JWT:ValidAudience"],
+        ValidateLifetime = true
     };
 });
 

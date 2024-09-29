@@ -4,11 +4,8 @@ namespace DoAnBackend.Data
 {
     public class Medicine : BaseEntity
     {
-        [Required]
         public string? Name { get; set; }
-        [Required]
         public string? Unit { get; set; }
-        [Required]
         public decimal? Price { get; set; }
 
         public ICollection<PrescriptionDetail>? PrescriptionDetails { get; set; }

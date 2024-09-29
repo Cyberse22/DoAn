@@ -6,8 +6,8 @@ namespace DoAnBackend.Data
     public class Appointment : BaseEntity
     {
         public string? Reason {  get; set; }
-        public DateOnly? Date {  get; set; }
-        public TimeSpan? Time { get; set; }
+        public DateOnly? AppointmentDate {  get; set; }
+        public int Number { get; set; }
         public string? Status { get; set; }
 
         public string? PatientId { get; set; }

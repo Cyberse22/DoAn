@@ -8,19 +8,18 @@
         public int Id { get; set; }
         public string PatientFirstName { get; set; }
         public string PatientLastName { get; set; }
-        public IList<Medicine> Medicines { get; set; }
+        public IList<MedicineModel> Medicines { get; set; }
+        public int Quantity { get; set; }
         public int ServiceId { get; set; }
-
         public int ServiceQuantity { get; set; }
         public decimal TotalAmount { get; set; }
         public decimal MedicinePrice { get; set; }
         public string ServiceName { get; set; }
     }
-    public class Medicine
+    public class MedicineModels
     {
-        public string MedicineName { get; set; }
-        public decimal Price { get; set; }
-        public int Quantity { get; set; }
+        public string? MedicineName { get; set; }
+        public decimal? Price { get; set; }
     }
 
 }

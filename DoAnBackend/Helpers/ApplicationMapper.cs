@@ -12,17 +12,26 @@ namespace DoAnBackend.Helpers
             CreateMap<ApplicationUser, CurrentUserModel>().ReverseMap();
             CreateMap<CurrentUserModel, TempModel>().ReverseMap();
             CreateMap<PasswordModel, SignInModel>().ReverseMap();
-            CreateMap<AppointmentModel, Appointment>()
-                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date.HasValue ? DateOnly.FromDateTime(src.Date.Value) : default(DateOnly)))
-                .ForMember(dest => dest.Time, opt => opt.MapFrom(src => src.TimeSpan.HasValue ? src.TimeSpan.Value : default(TimeSpan)))
-                .ForMember(dest => dest.Reason, opt => opt.MapFrom(src => src.Reason))
-                .ReverseMap()
-                .ForMember(dest => dest.TimeSpan, opt => opt.MapFrom(src => src.Time));
-
-            CreateMap<AppointmentModel.AppointmentDetails, Appointment>()
+            CreateMap<Appointment, AppointmentModel>()
+                .ForMember(dest => dest.PatientName, opt => opt.MapFrom(src => src.Patient.FirstName + " " + src.Patient.LastName))
+                .ForMember(dest => dest.NurseName, opt => opt.MapFrom(src => src.Nurse.FirstName + " " + src.Nurse.LastName))
+                .ForMember(dest => dest.DoctorName, opt => opt.MapFrom(src => src.Doctor.FirstName + " " + src.Doctor.LastName))
                 .ReverseMap();
-            CreateMap<DateOnly, DateTime>().ConvertUsing(d => d.ToDateTime(TimeOnly.MinValue));
-            CreateMap<DateTime, DateOnly>().ConvertUsing(d => DateOnly.FromDateTime(d));
+            CreateMap<AppointmentModel.CreateAppointmentModel, AppointmentModel>().ReverseMap();
+            CreateMap<Appointment, AppointmentModel.CreateAppointmentModel>()
+                    .ForMember(dest => dest.AppointmentDate, opt => opt.MapFrom(src => src.AppointmentDate))
+                    .ForMember(dest => dest.Reason, opt => opt.MapFrom(src => src.Reason))
+                    .ReverseMap();
+            CreateMap<Medicine, MedicineModel>().ReverseMap();
+            CreateMap<MedicineModel, Medicine>().ReverseMap();
+            CreateMap<PrescriptionModel, Prescription>().ReverseMap();
+            CreateMap<Prescription, PrescriptionModel>()
+                    .ForMember(dest => dest.PatientName, opt => opt.MapFrom(src => src.Patient.FirstName + " " + src.Patient.LastName))
+                    .ForMember(dest => dest.DoctorName, opt => opt.MapFrom(src => src.Doctor.FirstName + " " + src.Doctor.LastName))
+                    .ReverseMap();
+            CreateMap<PrescriptionDetail, PrescriptionModel.PrescriptionDetailModel>()
+                    .ForMember(dest => dest.MedicineName, opt => opt.MapFrom(src => src.Medicine.Name))
+                    .ReverseMap();
         }
     }
 }
