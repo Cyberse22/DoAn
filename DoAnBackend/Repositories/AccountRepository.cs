@@ -39,6 +39,7 @@ namespace DoAnBackend.Repositories
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,
+                DateOfBirth = model.DateOfBirth,
                 UserName = model.Email,
                 Gender = model.Gender,
                 PhoneNumber = model.PhoneNumber,
@@ -86,6 +87,7 @@ namespace DoAnBackend.Repositories
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,
+                DateOfBirth = model.DateOfBirth,
                 UserName = model.Email,
                 Gender = model.Gender,
                 PhoneNumber = model.PhoneNumber
@@ -155,6 +157,7 @@ namespace DoAnBackend.Repositories
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,
+                DateOfBirth = model.DateOfBirth,
                 UserName = model.Email,
                 Gender = model.Gender,
                 PhoneNumber = model.PhoneNumber,

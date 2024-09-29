@@ -3,28 +3,48 @@
   "WorkspaceRootPath": "C:\\Code\\DoAn\\DoAnBackend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\data\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:data\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\models\\signupmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:models\\signupmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\data\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:data\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\services\\appointmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:services\\appointmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\repositories\\interface\\iappointmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:repositories\\interface\\iappointmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\repositories\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:repositories\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\repositories\\appointmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:repositories\\appointmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\repositories\\interface\\iappointmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:repositories\\interface\\iappointmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\services\\interface\\iappointmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:services\\interface\\iappointmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\data\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:data\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\repositories\\medicinerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:repositories\\medicinerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\services\\appointmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:services\\appointmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\code\\doan\\doanbackend\\data\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:data\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,84 +54,45 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Invoice.cs",
-              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Data\\Invoice.cs",
-              "RelativeDocumentMoniker": "Data\\Invoice.cs",
-              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Data\\Invoice.cs",
-              "RelativeToolTip": "Data\\Invoice.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAvAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "AccountRepository.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\AccountRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\AccountRepository.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\AccountRepository.cs",
+              "RelativeToolTip": "Repositories\\AccountRepository.cs",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAAYwMMAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-29T10:34:56.784Z",
+              "WhenOpened": "2024-09-29T13:40:43.233Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SignUpModel.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Models\\SignUpModel.cs",
+              "RelativeDocumentMoniker": "Models\\SignUpModel.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Models\\SignUpModel.cs",
+              "RelativeToolTip": "Models\\SignUpModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-29T13:40:00.27Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AppointmentController.cs",
-              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Controllers\\AppointmentController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AppointmentController.cs",
-              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Controllers\\AppointmentController.cs",
-              "RelativeToolTip": "Controllers\\AppointmentController.cs",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAmwHkAAAAkAAAAAAAAAA==",
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Data\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationUser.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Data\\ApplicationUser.cs",
+              "RelativeToolTip": "Data\\ApplicationUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-29T10:32:30.035Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AppointmentService.cs",
-              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Services\\AppointmentService.cs",
-              "RelativeDocumentMoniker": "Services\\AppointmentService.cs",
-              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Services\\AppointmentService.cs",
-              "RelativeToolTip": "Services\\AppointmentService.cs",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAwwGYAAABcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-29T10:31:18.945Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IAppointmentService.cs",
-              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Services\\Interface\\IAppointmentService.cs",
-              "RelativeDocumentMoniker": "Services\\Interface\\IAppointmentService.cs",
-              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Services\\Interface\\IAppointmentService.cs",
-              "RelativeToolTip": "Services\\Interface\\IAppointmentService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAB5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-29T10:30:22.92Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AppointmentRepository.cs",
-              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\AppointmentRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\AppointmentRepository.cs",
-              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\AppointmentRepository.cs",
-              "RelativeToolTip": "Repositories\\AppointmentRepository.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAIwDUAAABOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-29T10:27:25.719Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IAppointmentRepository.cs",
-              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\Interface\\IAppointmentRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\Interface\\IAppointmentRepository.cs",
-              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\Interface\\IAppointmentRepository.cs",
-              "RelativeToolTip": "Repositories\\Interface\\IAppointmentRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAB2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-29T10:27:06.032Z",
+              "WhenOpened": "2024-09-29T13:39:27.74Z",
               "EditorCaption": ""
             },
             {
@@ -121,6 +102,103 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Appointment.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Data\\Appointment.cs",
+              "RelativeDocumentMoniker": "Data\\Appointment.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Data\\Appointment.cs",
+              "RelativeToolTip": "Data\\Appointment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-29T11:17:18.122Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MedicineRepository.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\MedicineRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\MedicineRepository.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\MedicineRepository.cs",
+              "RelativeToolTip": "Repositories\\MedicineRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABoAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-29T11:05:34.342Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Invoice.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Data\\Invoice.cs",
+              "RelativeDocumentMoniker": "Data\\Invoice.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Data\\Invoice.cs",
+              "RelativeToolTip": "Data\\Invoice.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-29T10:34:56.784Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AppointmentController.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Controllers\\AppointmentController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AppointmentController.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Controllers\\AppointmentController.cs",
+              "RelativeToolTip": "Controllers\\AppointmentController.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAIwFwAAABfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-29T10:32:30.035Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AppointmentService.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Services\\AppointmentService.cs",
+              "RelativeDocumentMoniker": "Services\\AppointmentService.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Services\\AppointmentService.cs",
+              "RelativeToolTip": "Services\\AppointmentService.cs",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAwwGYAAABcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-29T10:31:18.945Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IAppointmentService.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Services\\Interface\\IAppointmentService.cs",
+              "RelativeDocumentMoniker": "Services\\Interface\\IAppointmentService.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Services\\Interface\\IAppointmentService.cs",
+              "RelativeToolTip": "Services\\Interface\\IAppointmentService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA4AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-29T10:30:22.92Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AppointmentRepository.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\AppointmentRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\AppointmentRepository.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\AppointmentRepository.cs",
+              "RelativeToolTip": "Repositories\\AppointmentRepository.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwDUAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-29T10:27:25.719Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IAppointmentRepository.cs",
+              "DocumentMoniker": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\Interface\\IAppointmentRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Interface\\IAppointmentRepository.cs",
+              "ToolTip": "C:\\Code\\DoAn\\DoAnBackend\\Repositories\\Interface\\IAppointmentRepository.cs",
+              "RelativeToolTip": "Repositories\\Interface\\IAppointmentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAB2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-29T10:27:06.032Z"
             }
           ]
         }

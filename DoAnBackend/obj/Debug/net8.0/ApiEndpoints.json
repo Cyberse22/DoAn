@@ -421,6 +421,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "DoAnBackend.Controllers.PresciptionController",
+    "Method": "CreatePrescription",
+    "RelativePath": "api/Presciption",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DoAnBackend.Models.PrescriptionModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.PresciptionController",
+    "Method": "GetPrescriptionByDate",
+    "RelativePath": "api/Presciption/ByDate",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "appointmentDate",
+        "Type": "System.DateOnly",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "DoAnBackend.Controllers.AppointmentController",
     "Method": "GetAppointmentsByDate",
     "RelativePath": "ByDate",
@@ -513,6 +545,32 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
+    "Method": "GetPatientHistory",
+    "RelativePath": "GetPatientHistory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "patientEmail",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "startDate",
+        "Type": "System.DateOnly",
+        "IsRequired": false
+      },
+      {
+        "Name": "endDate",
+        "Type": "System.DateOnly",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   }
 ]

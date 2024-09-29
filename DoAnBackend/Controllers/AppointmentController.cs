@@ -85,7 +85,7 @@ namespace DoAnBackend.Controllers
         //    }
         //    return Ok(appointments);
         //}
-        [HttpGet("ByPatientEmail/{patientId}")]
+        [HttpGet("ByPatientEmail")]
         public async Task<IActionResult> GetAppointmentsByPatientEmail(string email)
         {
             try
