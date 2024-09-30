@@ -154,6 +154,9 @@ namespace DoAnBackend.Migrations
                     b.Property<string>("PatientId")
                         .HasColumnType("text");
 
+                    b.Property<string>("PatientName")
+                        .HasColumnType("text");
+
                     b.Property<string>("Reason")
                         .HasColumnType("text");
 

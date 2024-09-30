@@ -22,9 +22,19 @@ namespace DoAnBackend.Repositories
 
         public async Task<List<Appointment>> GetAppointmentsByDateAsync(DateOnly appointmentDate)
         {
-            return await _context.Appointments
+            var appointments = await _context.Appointments
                                  .Where(a => a.AppointmentDate == appointmentDate)
+                                 .Include(a => a.Patient)
                                  .ToListAsync();
+            foreach (var appointment in appointments)
+            {
+                if (appointment.Patient != null) // Kiểm tra Patient không null
+                {
+                    appointment.PatientName = $"{appointment.Patient.LastName} {appointment.Patient.FirstName}";
+                }
+            }
+
+            return appointments;
         }
 
         public async Task<Appointment?> GetByIdAsync(Guid id)
@@ -47,18 +57,11 @@ namespace DoAnBackend.Repositories
             return await _context.Appointments.ToListAsync();
         }
 
-        public async Task<List<AppointmentModel>> GetAppointmentsByPatientEmailAsync(string email)
+        public async Task<IEnumerable<Appointment>> GetAppointmentsByPatientEmailAsync(string email)
         {
-            var appointments = await _context.Appointments
-                                             .Where(a => a.Patient.Email == email)
-                                             .Select(a => new AppointmentModel
-                                             {
-                                                 Id = a.Id,
-                                                 Reason = a.Reason,
-                                                 AppointmentDate = a.AppointmentDate,
-                                                 Status = a.Status,
-                                             }).ToListAsync();
-            return appointments;
+            return await _context.Appointments
+                .Where(a => a.PatientEmail == email)
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<Appointment>> GetCompletedAppointmentsAsync(string patientEmail, DateOnly startDate, DateOnly endDate)

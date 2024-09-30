@@ -2,6 +2,7 @@
 using DoAnBackend.Helpers;
 using DoAnBackend.Services;
 using DoAnBackend.Services.Interface;
+using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 using System.Text.Json.Serialization;
 
@@ -18,6 +19,7 @@ namespace DoAnBackend.Models
         public string? NurseId { get; set; }
         public string? DoctorId { get; set; }
         public string? PatientName { get; set; }
+        public string? PatientEmail { get; set; }
         public string? NurseName { get; set; }
         public string? DoctorName { get; set; }
 
@@ -25,6 +27,8 @@ namespace DoAnBackend.Models
         public class CreateAppointmentModel
         {
             public string? Reason { get; set; }
+            //[DataType(DataType.Date)]
+            //[DisplayFormat(DataFormatString = "{dd/MM/yyyy}", ApplyFormatInEditMode = true)]
             public DateOnly AppointmentDate { get; set; }
         }
     }

@@ -27,17 +27,20 @@ namespace DoAnBackend.Controllers
         public async Task<IActionResult> CreateAppointment(AppointmentModel.CreateAppointmentModel model)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var email = User.FindFirstValue(ClaimTypes.Email);
+            var name = User.FindFirstValue(ClaimTypes.Name);
+
             if (string.IsNullOrEmpty(userId))
             {
                 return Unauthorized("User ID not found.");
             }
 
-            await _appointmentService.CreateAppointmentAsync(model, userId);
+            await _appointmentService.CreateAppointmentAsync(model, userId, email, name);
             return Ok("Appointment created successfully.");
         }
 
         [HttpPost("Cancel/{id}")]
-        [Authorize(Roles = "Patient")]
+        //[Authorize(Roles = "Patient")]
         public async Task<IActionResult> CancelAppointment(Guid id)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -46,7 +49,7 @@ namespace DoAnBackend.Controllers
         }
 
         [HttpPost("Confirm/{id}")]
-        [Authorize(Roles = "Nurse")]
+        //[Authorize(Roles = "Nurse")]
         public async Task<IActionResult> ConfirmAppointment(Guid id)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);

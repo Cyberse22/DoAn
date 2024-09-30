@@ -12,6 +12,7 @@ namespace DoAnBackend.Data
 
         public string? PatientId { get; set; }
         public string? PatientEmail { get; set; }
+        public string? PatientName { get; set; }
         public Patient? Patient { get; set; }
 
         public string? NurseId { get; set; }

@@ -3,6 +3,7 @@ using DoAnBackend.Data;
 using DoAnBackend.Models;
 using DoAnBackend.Repositories.Interface;
 using DoAnBackend.Services.Interface;
+using System.Globalization;
 using System.Security.Claims;
 
 namespace DoAnBackend.Services
@@ -47,11 +48,20 @@ namespace DoAnBackend.Services
             await _appointmentRepository.UpdateAppointmentAsync(appointment);
         }
 
-        public async Task<Appointment> CreateAppointmentAsync(AppointmentModel.CreateAppointmentModel model, string patientId)
+        public async Task<Appointment> CreateAppointmentAsync(AppointmentModel.CreateAppointmentModel model, string patientId, string patientEmail, string patientName)
         {
+            var patient = await _accountRepository.GetUserByEmailAsync(patientEmail);
+            if (patient == null)
+            {
+                throw new Exception("Patient not found");
+            }
+
             var appointment = _mapper.Map<Appointment>(model);
             appointment.PatientId = patientId;
+            appointment.PatientEmail = patientEmail;
+            appointment.PatientName = $"{patient.FirstName} {patient.LastName}";
             appointment.Status = "Pending";
+            appointment.AppointmentDate = model.AppointmentDate;
             appointment.Number = await GenerateAppointmentNumber(model.AppointmentDate);
 
             await _appointmentRepository.CreateAppointmentAsync(appointment);
@@ -88,14 +98,10 @@ namespace DoAnBackend.Services
             return _mapper.Map<List<AppointmentModel>>(appointments);
         }
 
-        public async Task<List<AppointmentModel>> GetAppointmentsByPatientEmailAsync(string email)
+        public async Task<IEnumerable<AppointmentModel>> GetAppointmentsByPatientEmailAsync(string email)
         {
-            var patient = await _accountRepository.GetUserByEmailAsync(email);
-            if (patient == null)
-            {
-                throw new Exception("Patient not found");
-            }
-            return await _appointmentRepository.GetAppointmentsByPatientEmailAsync(email);
+            var appointments = await _appointmentRepository.GetAppointmentsByPatientEmailAsync(email);
+            return _mapper.Map<IEnumerable<AppointmentModel>>(appointments);
         }
 
         public async Task<IEnumerable<Appointment>> GetPatientHistoryAsync(string patientEmail, DateOnly startDate, DateOnly endDate)

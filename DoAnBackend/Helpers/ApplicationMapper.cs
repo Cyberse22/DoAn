@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DoAnBackend.Data;
 using DoAnBackend.Models;
+using System.Globalization;
 
 namespace DoAnBackend.Helpers
 {
@@ -13,11 +14,12 @@ namespace DoAnBackend.Helpers
             CreateMap<CurrentUserModel, TempModel>().ReverseMap();
             CreateMap<PasswordModel, SignInModel>().ReverseMap();
             CreateMap<Appointment, AppointmentModel>()
-                .ForMember(dest => dest.PatientName, opt => opt.MapFrom(src => src.Patient.FirstName + " " + src.Patient.LastName))
-                .ForMember(dest => dest.NurseName, opt => opt.MapFrom(src => src.Nurse.FirstName + " " + src.Nurse.LastName))
-                .ForMember(dest => dest.DoctorName, opt => opt.MapFrom(src => src.Doctor.FirstName + " " + src.Doctor.LastName))
-                .ReverseMap();
-            CreateMap<AppointmentModel.CreateAppointmentModel, AppointmentModel>().ReverseMap();
+                    .ForMember(dest => dest.PatientName, opt => opt.MapFrom(src => src.PatientEmail))
+                    .ForMember(dest => dest.NurseName, opt => opt.MapFrom(src => $"{src.NurseFirstName} {src.NurseLastName}"))
+                    .ForMember(dest => dest.DoctorName, opt => opt.MapFrom(src => $"{src.DoctorFirstName} {src.DoctorLastName}"))
+                    .ReverseMap();
+            CreateMap<AppointmentModel.CreateAppointmentModel, Appointment>()
+                    .ReverseMap();
             CreateMap<Appointment, AppointmentModel.CreateAppointmentModel>()
                     .ForMember(dest => dest.AppointmentDate, opt => opt.MapFrom(src => src.AppointmentDate))
                     .ForMember(dest => dest.Reason, opt => opt.MapFrom(src => src.Reason))
