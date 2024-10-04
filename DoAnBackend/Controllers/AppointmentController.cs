@@ -9,6 +9,8 @@ using System.Security.Claims;
 
 namespace DoAnBackend.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class AppointmentController : ControllerBase
     {
         private readonly IAppointmentService _appointmentService;
@@ -39,23 +41,30 @@ namespace DoAnBackend.Controllers
             return Ok("Appointment created successfully.");
         }
 
-        [HttpPost("Cancel/{id}")]
+        [HttpPut("Cancel")]
         //[Authorize(Roles = "Patient")]
-        public async Task<IActionResult> CancelAppointment(Guid id)
+        public async Task<IActionResult> CancelAppointment(string name)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            await _appointmentService.CancelAppointmentAsync(id, userId);
+            var email = User.FindFirstValue(ClaimTypes.Email);
+            await _appointmentService.CancelAppointmentAsync(name, email);
             return Ok("Appointment cancelled successfully.");
         }
-
-        [HttpPost("Confirm/{id}")]
+        [HttpPut("Confirm")]
         //[Authorize(Roles = "Nurse")]
-        public async Task<IActionResult> ConfirmAppointment(Guid id)
+        public async Task<IActionResult> ConfirmAppointment(string name)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            await _appointmentService.ConfirmAppointmentAsync(id, userId);
+            var email = User.FindFirstValue(ClaimTypes.Email);
+            await _appointmentService.ConfirmAppointmentAsync(name, email);
             return Ok("Appointment confirmed successfully.");
         }
+        [HttpPut("ExaminatingInProgress")]
+        public async Task<IActionResult> DoctorGetAppointment(string name)
+        {
+            var email = User.FindFirstValue(ClaimTypes.Email);
+            await _appointmentService.DoctorGetAppointment(name, email);
+            return Ok("Doctor has get Appointment");
+        }
+
         [HttpGet("{id}")]
         [Authorize(Roles = "Doctor, Nurse, Admin")]
         public async Task<IActionResult> GetAppointmentById(Guid id)
@@ -75,19 +84,6 @@ namespace DoAnBackend.Controllers
             }
             return Ok(appointments);
         }
-        //[HttpGet("GetByPatient/{patientId}")]
-        //public async Task<IActionResult> GetAppointmentsByPatientId(string Email)
-        //{
-        //    var user = User.FindFirstValue(ClaimTypes.Email);
-        //    if (user == null) return NotFound();
-        //    var patientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        //    var appointments = await _appointmentService.GetAppointmentsByPatientIdAsync(patientId);
-        //    if (appointments == null || appointments.Count == 0)
-        //    {
-        //        return NotFound($"No appointments found for patient with ID {patientId}.");
-        //    }
-        //    return Ok(appointments);
-        //}
         [HttpGet("ByPatientEmail")]
         public async Task<IActionResult> GetAppointmentsByPatientEmail(string email)
         {
@@ -123,6 +119,42 @@ namespace DoAnBackend.Controllers
                 return NotFound("No appointment history found.");
             }
             return Ok(appointments);
+        }
+        [HttpGet("SearchByName")]
+        public async Task<IActionResult> GetAppointmentsByNameContains(string appointmentName)
+        {
+            try
+            {
+                var appointments = await _appointmentService.GetAppointmentsByNameContainsAsync(appointmentName);
+                if (appointments == null || !appointments.Any())
+                {
+                    return NotFound("No appointments found with the given " + appointmentName);
+                }
+
+                return Ok(appointments);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet("GetByName")]
+        public async Task<IActionResult> GetByAppointmentName(string appointmentName)
+        {
+            try
+            {
+                var appointment = await _appointmentService.GetByAppointmentNameAsync(appointmentName);
+                if (appointment == null)
+                {
+                    return NotFound("Appointment not found");
+                }
+
+                return Ok(appointment);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

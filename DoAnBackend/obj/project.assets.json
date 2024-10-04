@@ -10415,19 +10415,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\kieth\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Code\\DoAn\\DoAnBackend\\DoAnBackend.csproj",
+      "projectUniqueName": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackEnd\\DoAnBackend.csproj",
       "projectName": "DoAnBackend",
-      "projectPath": "C:\\Code\\DoAn\\DoAnBackend\\DoAnBackend.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Code\\DoAn\\DoAnBackend\\obj\\",
+      "projectPath": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackEnd\\DoAnBackend.csproj",
+      "packagesPath": "C:\\Users\\kieth\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackEnd\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kieth\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

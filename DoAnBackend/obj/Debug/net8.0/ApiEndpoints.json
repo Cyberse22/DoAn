@@ -1,21 +1,5 @@
 [
   {
-    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
-    "Method": "GetAppointmentById",
-    "RelativePath": "{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "AdminController",
     "Method": "Index",
     "RelativePath": "Admin/Index",
@@ -312,17 +296,7 @@
   {
     "ContainingType": "DoAnBackend.Controllers.AccountsController",
     "Method": "GetCurrentUser",
-    "RelativePath": "api/Accounts/GetCurrentUser",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DoAnBackend.Controllers.AccountsController",
-    "Method": "GetCurrentUser2",
-    "RelativePath": "api/Accounts/GetCurrentUser2",
+    "RelativePath": "api/Accounts/CurrentUser",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -373,6 +347,186 @@
         "Name": "signUpModel",
         "Type": "DoAnBackend.Models.SignUpModel",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
+    "Method": "GetAppointmentById",
+    "RelativePath": "api/Appointment/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
+    "Method": "GetAppointmentsByDate",
+    "RelativePath": "api/Appointment/ByDate",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "appointmentDate",
+        "Type": "System.DateOnly",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
+    "Method": "GetAppointmentsByPatientEmail",
+    "RelativePath": "api/Appointment/ByPatientEmail",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
+    "Method": "CancelAppointment",
+    "RelativePath": "api/Appointment/Cancel",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
+    "Method": "ConfirmAppointment",
+    "RelativePath": "api/Appointment/Confirm",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
+    "Method": "CreateAppointment",
+    "RelativePath": "api/Appointment/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DoAnBackend.Models.AppointmentModel\u002BCreateAppointmentModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
+    "Method": "DoctorGetAppointment",
+    "RelativePath": "api/Appointment/ExaminatingInProgress",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
+    "Method": "GetAll",
+    "RelativePath": "api/Appointment/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
+    "Method": "GetByAppointmentName",
+    "RelativePath": "api/Appointment/GetByName",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "appointmentName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
+    "Method": "GetPatientHistory",
+    "RelativePath": "api/Appointment/GetPatientHistory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "patientEmail",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "startDate",
+        "Type": "System.DateOnly",
+        "IsRequired": false
+      },
+      {
+        "Name": "endDate",
+        "Type": "System.DateOnly",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
+    "Method": "GetAppointmentsByNameContains",
+    "RelativePath": "api/Appointment/SearchByName",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "appointmentName",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -435,7 +589,28 @@
     "Parameters": [
       {
         "Name": "model",
-        "Type": "DoAnBackend.Models.PrescriptionModel",
+        "Type": "DoAnBackend.Models.PrescriptionModel\u002BCreatePrescription",
+        "IsRequired": true
+      },
+      {
+        "Name": "appointmentName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.PresciptionController",
+    "Method": "GetPrescription",
+    "RelativePath": "api/Presciption/{appointmentName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "appointmentName",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -443,109 +618,29 @@
   },
   {
     "ContainingType": "DoAnBackend.Controllers.PresciptionController",
-    "Method": "GetPrescriptionByDate",
-    "RelativePath": "api/Presciption/ByDate",
-    "HttpMethod": "GET",
+    "Method": "UpdatePrescription",
+    "RelativePath": "api/Presciption/{appointmentName}",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "appointmentDate",
-        "Type": "System.DateOnly",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
-    "Method": "GetAppointmentsByDate",
-    "RelativePath": "ByDate",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "appointmentDate",
-        "Type": "System.DateOnly",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
-    "Method": "GetAppointmentsByPatientEmail",
-    "RelativePath": "ByPatientEmail",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "email",
+        "Name": "appointmentName",
         "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
-    "Method": "CancelAppointment",
-    "RelativePath": "Cancel/{id}",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
-    "Method": "ConfirmAppointment",
-    "RelativePath": "Confirm/{id}",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
-    "Method": "CreateAppointment",
-    "RelativePath": "Create",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Reason",
-        "Type": "System.String",
-        "IsRequired": false
       },
       {
-        "Name": "AppointmentDate",
-        "Type": "System.DateOnly",
-        "IsRequired": false
+        "Name": "prescriptionModel",
+        "Type": "DoAnBackend.Models.PrescriptionModel",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
-    "Method": "GetAll",
-    "RelativePath": "GetAll",
+    "ContainingType": "DoAnBackend.Controllers.ShiftController",
+    "Method": "GetAllShifts",
+    "RelativePath": "api/Shift",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -553,27 +648,70 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
-    "Method": "GetPatientHistory",
-    "RelativePath": "GetPatientHistory",
+    "ContainingType": "DoAnBackend.Controllers.ShiftController",
+    "Method": "CreateShift",
+    "RelativePath": "api/Shift",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DoAnBackend.Models.ShiftModel\u002BCreateShiftModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.ShiftController",
+    "Method": "GetShiftByName",
+    "RelativePath": "api/Shift/{name}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "patientEmail",
+        "Name": "name",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.ShiftController",
+    "Method": "UpdateShift",
+    "RelativePath": "api/Shift/{name}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
       },
       {
-        "Name": "startDate",
-        "Type": "System.DateOnly",
-        "IsRequired": false
-      },
+        "Name": "model",
+        "Type": "DoAnBackend.Models.ShiftModel\u002BCreateShiftModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.ShiftController",
+    "Method": "DeleteShift",
+    "RelativePath": "api/Shift/{name}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
-        "Name": "endDate",
-        "Type": "System.DateOnly",
-        "IsRequired": false
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

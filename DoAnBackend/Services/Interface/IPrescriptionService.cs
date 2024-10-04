@@ -4,7 +4,8 @@ namespace DoAnBackend.Services.Interface
 {
     public interface IPrescriptionService
     {
-        Task CreatePrescriptionAsync(PrescriptionModel model);
-        Task<IEnumerable<PrescriptionModel>> GetPrescriptionsByDateAsync(DateOnly appointmentDate);
+        Task<PrescriptionModel> CreatePrescriptionAsync(PrescriptionModel.CreatePrescription prescriptionModel, string appointmentName);
+        Task<PrescriptionModel> GetPrescriptionByAppointmentName(string appointmentName);
+        Task UpdatePrescription(PrescriptionModel prescriptionModel);
     }
 }

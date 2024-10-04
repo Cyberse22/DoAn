@@ -12,21 +12,25 @@ namespace DoAnBackend.Repositories
             _context = context;
         }
 
-        public async Task AddPrescriptionAsync(Prescription prescription)
+        public async Task<Prescription> CreatePrescriptionAsync(Prescription prescription)
         {
-            await _context.Prescriptions.AddAsync(prescription);
+            _context.Prescriptions.Add(prescription);
             await _context.SaveChangesAsync();
+            return prescription;
         }
 
-        public async Task<IEnumerable<Prescription>> GetPrescriptionsByDateAsync(DateOnly appointmentDate)
+        public async Task<Prescription> GetPrescriptionByAppointmentName(string appointmentName)
         {
             return await _context.Prescriptions
-                                 .Include(p => p.Patient)
-                                 .Include(p => p.Doctor)
                                  .Include(p => p.PrescriptionDetails)
                                  .ThenInclude(pd => pd.Medicine)
-                                 .Where(p => p.Appointment.AppointmentDate == appointmentDate)
-                                 .ToListAsync(); 
+                                 .FirstOrDefaultAsync(p => p.AppointmentName == appointmentName);
+        }
+
+        public async Task UpdatePrescription(Prescription prescription)
+        {
+            _context.Prescriptions.Update(prescription);
+            await _context.SaveChangesAsync();
         }
     }
 }

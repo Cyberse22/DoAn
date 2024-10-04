@@ -11,12 +11,8 @@ namespace DoAnBackend.Helpers
         {
             CreateMap<ApplicationUser, UserDetailModel>().ReverseMap();
             CreateMap<ApplicationUser, CurrentUserModel>().ReverseMap();
-            CreateMap<CurrentUserModel, TempModel>().ReverseMap();
             CreateMap<PasswordModel, SignInModel>().ReverseMap();
             CreateMap<Appointment, AppointmentModel>()
-                    .ForMember(dest => dest.PatientName, opt => opt.MapFrom(src => src.PatientEmail))
-                    .ForMember(dest => dest.NurseName, opt => opt.MapFrom(src => $"{src.NurseFirstName} {src.NurseLastName}"))
-                    .ForMember(dest => dest.DoctorName, opt => opt.MapFrom(src => $"{src.DoctorFirstName} {src.DoctorLastName}"))
                     .ReverseMap();
             CreateMap<AppointmentModel.CreateAppointmentModel, Appointment>()
                     .ReverseMap();
@@ -33,6 +29,15 @@ namespace DoAnBackend.Helpers
                     .ReverseMap();
             CreateMap<PrescriptionDetail, PrescriptionModel.PrescriptionDetailModel>()
                     .ForMember(dest => dest.MedicineName, opt => opt.MapFrom(src => src.Medicine.Name))
+                    .ReverseMap()
+                    .ForMember(dest => dest.Medicine, opt => opt.Ignore());
+            CreateMap<Shift, ShiftModel>()
+                    .ForMember(dest => dest.StartTime, opt => opt.MapFrom(src => src.StartTime.ToString("HH:mm")))
+                    .ForMember(dest => dest.EndTime, opt => opt.MapFrom(src => src.EndTime.ToString("HH:mm")))
+                    .ReverseMap();
+            CreateMap<ShiftModel.CreateShiftModel, Shift>()
+                    .ForMember(dest => dest.StartTime, opt => opt.MapFrom(src => TimeOnly.ParseExact(src.StartTime, "HH:mm")))
+                    .ForMember(dest => dest.EndTime, opt => opt.MapFrom(src => TimeOnly.ParseExact(src.EndTime, "HH:mm")))
                     .ReverseMap();
         }
     }

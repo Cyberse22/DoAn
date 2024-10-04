@@ -14,21 +14,33 @@ namespace DoAnBackend.Controllers
         {
             _prescriptionService = prescriptionService;
         }
-        [HttpGet("ByDate")]
-        public async Task<IActionResult> GetPrescriptionByDate(DateOnly appointmentDate)
+        [HttpGet("{appointmentName}")]
+        public async Task<IActionResult> GetPrescription(string appointmentName)
         {
-            var prescriptions = await _prescriptionService.GetPrescriptionsByDateAsync(appointmentDate);
-            return Ok(prescriptions);
+            var prescription = await _prescriptionService.GetPrescriptionByAppointmentName(appointmentName);
+            if (prescription == null)
+            {
+                return NotFound();
+            }
+            return Ok(prescription);
         }
         [HttpPost]
-        public async Task<IActionResult> CreatePrescription(PrescriptionModel model)
+        public async Task<IActionResult> CreatePrescription(PrescriptionModel.CreatePrescription model, string appointmentName)
+        {
+            var prescription = await _prescriptionService.CreatePrescriptionAsync(model, appointmentName);
+            return Ok(prescription);
+        }
+
+        [HttpPut("{appointmentName}")]
+        public async Task<IActionResult> UpdatePrescription(string appointmentName, [FromBody] PrescriptionModel prescriptionModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            await _prescriptionService.CreatePrescriptionAsync(model);
-            return Ok(model);
+
+            await _prescriptionService.UpdatePrescription(prescriptionModel);
+            return NoContent();
         }
     }
 }

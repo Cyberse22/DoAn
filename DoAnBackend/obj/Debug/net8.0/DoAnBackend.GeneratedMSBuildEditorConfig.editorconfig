@@ -17,63 +17,63 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DoAnBackend
 build_property.RootNamespace = DoAnBackend
-build_property.ProjectDir = C:\Code\DoAn\DoAnBackend\
+build_property.ProjectDir = C:\Users\kieth\OneDrive\Desktop\DoAn\DoAnBackEnd\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Code\DoAn\DoAnBackend
+build_property.MSBuildProjectDirectory = C:\Users\kieth\OneDrive\Desktop\DoAn\DoAnBackEnd
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Code/DoAn/DoAnBackend/Views/Admin/Index.cshtml]
+[C:/Users/kieth/OneDrive/Desktop/DoAn/DoAnBackEnd/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Code/DoAn/DoAnBackend/Views/Home/Index.cshtml]
+[C:/Users/kieth/OneDrive/Desktop/DoAn/DoAnBackEnd/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Code/DoAn/DoAnBackend/Views/Shared/_AdminLayout.cshtml]
+[C:/Users/kieth/OneDrive/Desktop/DoAn/DoAnBackEnd/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Code/DoAn/DoAnBackend/Views/Shared/_Footer.cshtml]
+[C:/Users/kieth/OneDrive/Desktop/DoAn/DoAnBackEnd/Views/Shared/_Footer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Code/DoAn/DoAnBackend/Views/Shared/_Layout.cshtml]
+[C:/Users/kieth/OneDrive/Desktop/DoAn/DoAnBackEnd/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Code/DoAn/DoAnBackend/Views/Shared/_Navbar.cshtml]
+[C:/Users/kieth/OneDrive/Desktop/DoAn/DoAnBackEnd/Views/Shared/_Navbar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXZiYXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Code/DoAn/DoAnBackend/Views/Shared/_Sidebar.cshtml]
+[C:/Users/kieth/OneDrive/Desktop/DoAn/DoAnBackEnd/Views/Shared/_Sidebar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TaWRlYmFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Code/DoAn/DoAnBackend/Views/User/AccessDenied.cshtml]
+[C:/Users/kieth/OneDrive/Desktop/DoAn/DoAnBackEnd/Views/User/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Code/DoAn/DoAnBackend/Views/User/Create.cshtml]
+[C:/Users/kieth/OneDrive/Desktop/DoAn/DoAnBackEnd/Views/User/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Code/DoAn/DoAnBackend/Views/User/Delete.cshtml]
+[C:/Users/kieth/OneDrive/Desktop/DoAn/DoAnBackEnd/Views/User/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Code/DoAn/DoAnBackend/Views/User/Edit.cshtml]
+[C:/Users/kieth/OneDrive/Desktop/DoAn/DoAnBackEnd/Views/User/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Code/DoAn/DoAnBackend/Views/User/Index.cshtml]
+[C:/Users/kieth/OneDrive/Desktop/DoAn/DoAnBackEnd/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Code/DoAn/DoAnBackend/Views/User/Login.cshtml]
+[C:/Users/kieth/OneDrive/Desktop/DoAn/DoAnBackEnd/Views/User/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

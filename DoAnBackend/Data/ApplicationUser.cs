@@ -16,10 +16,9 @@ namespace DoAnBackend.Data
     }
     public class ApplicationRole : IdentityRole 
     { 
-        public string? RoleName {  get; set; }
         public virtual ICollection<ApplicationUserRole>? UserRoles { get; set; }
     }
-    public class ApplicationUserRole : IdentityRole 
+    public class ApplicationUserRole : IdentityUserRole<string> 
     {
         public virtual ApplicationUser? User { get; set; }
         public virtual ApplicationRole? Role { get; set; }

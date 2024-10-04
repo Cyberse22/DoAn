@@ -7,5 +7,6 @@
 
         public ICollection<Appointment>? Appointments { get; set; }
         public ICollection<Prescription>? Prescriptions { get; set; }
+        public ICollection<Shift>? Shifts { get; set; }
     }
 }

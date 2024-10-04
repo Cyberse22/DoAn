@@ -218,5 +218,42 @@ namespace DoAnBackend.Repositories
                               }).FirstOrDefaultAsync();
             return user;
         }
+        public async Task<CurrentUserDetailModel> GetCurrentUserByEmailAsync(string email)
+        {
+            var user = await (from u in _applicationDbContext.Users
+                              join ur in _applicationDbContext.UserRoles on u.Id equals ur.UserId
+                              join r in _applicationDbContext.Roles on ur.RoleId equals r.Id
+                              where u.Email == email
+                              select new CurrentUserDetailModel
+                              {
+                                  Id = u.Id,
+                                  Email = u.Email,
+                                  FirstName = u.FirstName,
+                                  LastName = u.LastName,
+                                  PhoneNumber = u.PhoneNumber,
+                                  Gender = u.Gender,
+                                  Role = r.Name // Getting the role directly
+                              }).FirstOrDefaultAsync();
+
+            return user;
+        }
+        public async Task<ApplicationUser> GetCurrentUserByEmailAsync2(string email)
+        {
+            return await _applicationDbContext.Users
+                .Where(u => u.Email == email)
+                .Include(u => u.UserRoles)
+                .ThenInclude(ur => ur.Role)
+                .FirstOrDefaultAsync();
+        }
+        
+        public async Task<string> GetUserRoleAsync(string userId)
+        {
+            var roleName = await (from ur in _applicationDbContext.UserRoles
+                                  join r in _applicationDbContext.Roles on ur.RoleId equals r.Id
+                                  where ur.UserId == userId
+                                  select r.Name)
+                                  .FirstOrDefaultAsync();
+            return roleName;
+        }
     }
 }

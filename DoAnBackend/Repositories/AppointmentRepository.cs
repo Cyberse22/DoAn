@@ -75,5 +75,18 @@ namespace DoAnBackend.Repositories
                                  .Include(a => a.Prescription)
                                  .ToListAsync();
         }
+
+        public async Task<List<Appointment>> GetByAppointmentNameContainsAsync(string appointmentName)
+        {
+            return await _context.Appointments
+                                 .Where(a => a.AppointmentName.Contains(appointmentName))
+                                 .ToListAsync();
+        }
+
+        public async Task<Appointment?> GetByAppointmentNameDetailsAsync(string appointmentName)
+        {
+            return await _context.Appointments
+                                 .FirstOrDefaultAsync(a => a.AppointmentName == appointmentName);
+        }
     }
 }

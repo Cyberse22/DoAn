@@ -5,8 +5,9 @@ namespace DoAnBackend.Data
 {
     public class Appointment : BaseEntity
     {
+        public string? AppointmentName { get; set; }
         public string? Reason {  get; set; }
-        public DateOnly? AppointmentDate {  get; set; }
+        public DateOnly AppointmentDate {  get; set; }
         public int Number { get; set; }
         public string? Status { get; set; }
 
@@ -16,13 +17,13 @@ namespace DoAnBackend.Data
         public Patient? Patient { get; set; }
 
         public string? NurseId { get; set; }
-        public string? NurseFirstName { get; set; }
-        public string? NurseLastName { get; set; }
+        public string? NurseEmail { get; set; }
+        public string? NurseName { get; set; }
         public Nurse? Nurse { get; set; }
 
         public string? DoctorId { get; set; }
-        public string? DoctorFirstName { get; set; }
-        public string? DoctorLastName { get; set; }
+        public string? DoctorEmail { get; set; }
+        public string? DoctorName { get; set; }
         public Doctor? Doctor { get; set; }
 
         public Invoice? Invoice { get; set; }

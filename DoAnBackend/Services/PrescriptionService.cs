@@ -10,22 +10,79 @@ namespace DoAnBackend.Services
     {
         private readonly IPrescriptionRepository _prescriptionRepository;
         private readonly IMapper _mapper;
-        public PrescriptionService(IPrescriptionRepository prescriptionRepository, IMapper mapper)
+        private readonly IAppointmentRepository _appointmentRepository;
+        public PrescriptionService(IPrescriptionRepository prescriptionRepository, IMapper mapper, IAppointmentRepository appointmentRepository)
         {
             _prescriptionRepository = prescriptionRepository;
             _mapper = mapper;
+            _appointmentRepository = appointmentRepository;
         }
-
-        public async Task CreatePrescriptionAsync(PrescriptionModel model)
+        public async Task<PrescriptionModel> CreatePrescriptionAsync(PrescriptionModel.CreatePrescription prescriptionModel, string appointmentName)
         {
-            var prescription = _mapper.Map<Prescription>(model);
-            await _prescriptionRepository.AddPrescriptionAsync(prescription);
+            // Lấy thông tin chi tiết của Appointment bằng tên
+            var appointment = await _appointmentRepository.GetByAppointmentNameDetailsAsync(appointmentName);
+
+            // Nếu không tìm thấy Appointment, ném Exception
+            if (appointment == null)
+            {
+                throw new Exception("Appointment not found");
+            }
+
+            // Tạo tên Prescription theo quy tắc mong muốn
+            var emailPatient = appointment.PatientEmail.Split('@')[0];
+            var formattedDate = appointment.AppointmentDate.ToString("ddMMyyyy");
+            var prescriptionName = $"d{formattedDate}p{emailPatient}";
+
+            // Ánh xạ từ PrescriptionModel.CreatePrescription sang Prescription Entity
+            var prescription = new Prescription
+            {
+                PrescriptionName = prescriptionName,
+                Diagnsis = prescriptionModel.Diagnsis,
+                NextAppointment = prescriptionModel.NextAppointment,
+                AppointmentId = appointment.Id, // Lấy trực tiếp từ Appointment
+                AppointmentName = appointmentName,
+                PatientName = appointment.PatientName,
+                DoctorName = appointment.DoctorName,
+                DoctorEmail = appointment.DoctorEmail
+            };
+
+            // Tạo Prescription mới trong cơ sở dữ liệu
+            var createdPrescription = await _prescriptionRepository.CreatePrescriptionAsync(prescription);
+
+            // Trả về PrescriptionModel sau khi ánh xạ từ Prescription Entity
+            return _mapper.Map<PrescriptionModel>(createdPrescription);
         }
-
-        public async Task<IEnumerable<PrescriptionModel>> GetPrescriptionsByDateAsync(DateOnly appointmentDate)
+        public async Task<PrescriptionModel> GetPrescriptionByAppointmentName(string appointmentName)
         {
-            var prescriptions = await _prescriptionRepository.GetPrescriptionsByDateAsync(appointmentDate);
-            return _mapper.Map<IEnumerable<PrescriptionModel>>(prescriptions);
+            var prescription = await _prescriptionRepository.GetPrescriptionByAppointmentName(appointmentName);
+            return _mapper.Map<PrescriptionModel>(prescription);
+        }
+        public async Task UpdatePrescription(PrescriptionModel prescriptionModel)
+        {
+            var prescription = await _prescriptionRepository.GetPrescriptionByAppointmentName(prescriptionModel.AppointmentName);
+            _mapper.Map(prescriptionModel, prescription);
+
+            if(prescriptionModel.PrescriptionDetails != null)
+            {
+                var updatedDetails = prescriptionModel.PrescriptionDetails.Select(detailModel =>
+                _mapper.Map<PrescriptionDetail>(detailModel)).ToList();
+                prescription.PrescriptionDetails = updatedDetails;
+            }
+            await _prescriptionRepository.UpdatePrescription(prescription);
+        }
+        private string ReverseAppointmentName(string appointmentName)
+        {
+            var name = _appointmentRepository.GetByAppointmentNameDetailsAsync(appointmentName);
+            if (name == null) throw new ArgumentNullException("name");
+            
+            var patientEmailStartIndex = appointmentName.IndexOf("p") + 1;
+            var doctorDateIndex = appointmentName.IndexOf("d");
+
+            var patientEmail = appointmentName.Substring(patientEmailStartIndex, doctorDateIndex - patientEmailStartIndex);
+            var appointmentDateStr = appointmentName.Substring(doctorDateIndex + 1);
+
+            var appointmentDate = DateOnly.ParseExact(appointmentDateStr, "ddMMyyyy");
+            return $"d{appointmentDate:ddMMyyyy}p{patientEmail}";
         }
     }
 }

@@ -23,6 +23,7 @@ namespace DoAnBackend.Data
         public DbSet<Prescription> Prescriptions { get; set; }
         public DbSet<PrescriptionDetail> PrescriptionDetails { get; set; }
         public DbSet<Service> Services { get; set; }
+        public DbSet<Shift> Shifts { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<ApplicationRole> ApplicationRoles { get; set; }
         public DbSet<ApplicationUserRole> ApplicationUserRoles { get; set; }
@@ -154,6 +155,35 @@ namespace DoAnBackend.Data
                 .WithMany(m => m.PrescriptionDetails)
                 .HasForeignKey(pd => pd.MedicineId)
                 .IsRequired(false);
+            // Nurse and Shift (1-to-Many)
+            modelBuilder.Entity<Shift>()
+                .HasOne(s => s.Nurse)
+                .WithMany(n => n.Shifts)
+                .HasForeignKey(s => s.NurseId)
+                .OnDelete(DeleteBehavior.Restrict);
+            // Doctor and Shift (1-To-Many)
+            modelBuilder.Entity<Shift>()
+                .HasOne(s => s.Doctor)
+                .WithMany(n => n.Shifts)
+                .HasForeignKey(s => s.DoctorId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // UserApplication and Role
+            modelBuilder.Entity<ApplicationUser>(b =>
+            {
+                b.HasMany(e => e.UserRoles)
+                 .WithOne(e => e.User)
+                 .HasForeignKey(ur => ur.UserId)
+                 .IsRequired();
+            });
+
+            modelBuilder.Entity<ApplicationRole>(b =>
+            {
+                b.HasMany(e => e.UserRoles)
+                 .WithOne(e => e.Role)
+                 .HasForeignKey(ur => ur.RoleId)
+                 .IsRequired();
+            });
         }
         #endregion
     }

@@ -17,5 +17,8 @@ namespace DoAnBackend.Repositories.Interface
         Task<IdentityResult> CreateUserByAdminAsync(CreateByAdmin model);
         Task<CurrentUserDetailModel> GetUserDetailsByIdAndEmailAsync(string userId, string email);
         Task<CurrentUserDetailModel> GetAppointmentsByPatientEmailAsync(string email);
+        Task<CurrentUserDetailModel> GetCurrentUserByEmailAsync(string email);
+        Task<ApplicationUser> GetCurrentUserByEmailAsync2(string email);
+        Task<string> GetUserRoleAsync(string userId);
     }
 }

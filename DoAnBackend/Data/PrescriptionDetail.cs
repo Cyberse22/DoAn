@@ -8,9 +8,11 @@ namespace DoAnBackend.Data
         public int Quantity { get; set; }
 
         public Guid PrescriptionId { get; set; }
+        public string? PrescriptionName { get; set; }
         public Prescription? Prescription { get; set; }
 
         public Guid MedicineId { get; set; }
+        public string? MedicineName { get; set; }
         public Medicine? Medicine { get; set; }
     }
 }

@@ -53,11 +53,14 @@ namespace DoAnBackend.Services
             {
                 throw new UnauthorizedAccessException("User not found.");
             }
+            
+            var roleName = await _accountRepository.GetUserRoleAsync(user.Id);
             var authClaims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id),
                 new Claim(ClaimTypes.Email, email),
                 new Claim(ClaimTypes.Name, user.FirstName + " " + user.LastName),
+                new Claim(ClaimTypes.Role, roleName ?? "Patient"),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
@@ -136,6 +139,11 @@ namespace DoAnBackend.Services
         public async Task<CurrentUserDetailModel?> GetUserDetailsByEmailAsync(string email)
         {
             return await _accountRepository.GetAppointmentsByPatientEmailAsync(email);
+        }
+
+        public async Task<CurrentUserDetailModel> GetCurrentUserByEmailAsync(string email)
+        {
+            return await _accountRepository.GetCurrentUserByEmailAsync(email);
         }
     }
 }

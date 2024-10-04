@@ -30,6 +30,11 @@ namespace DoAnBackend.Helpers
             public static string Female = "Female";
             public static string PreferNotToSay = "Prefer not to say";
         }
+        public static class ShiftType
+        {
+            public static string DS = "DS - Day Shift";
+            public static string NS = "NS - Night Shift";
+        }
     }
 
     public static class Helper

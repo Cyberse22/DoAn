@@ -119,33 +119,36 @@ namespace DoAnBackend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateOnly?>("AppointmentDate")
+                    b.Property<DateOnly>("AppointmentDate")
                         .HasColumnType("date");
+
+                    b.Property<string>("AppointmentName")
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-                    b.Property<string>("DoctorFirstName")
+                    b.Property<string>("DoctorEmail")
                         .HasColumnType("text");
 
                     b.Property<string>("DoctorId")
                         .HasColumnType("text");
 
-                    b.Property<string>("DoctorLastName")
+                    b.Property<string>("DoctorName")
                         .HasColumnType("text");
 
                     b.Property<int>("Number")
                         .HasColumnType("integer");
 
-                    b.Property<string>("NurseFirstName")
+                    b.Property<string>("NurseEmail")
                         .HasColumnType("text");
 
                     b.Property<string>("NurseId")
                         .HasColumnType("text");
 
-                    b.Property<string>("NurseLastName")
+                    b.Property<string>("NurseName")
                         .HasColumnType("text");
 
                     b.Property<string>("PatientEmail")
@@ -387,6 +390,9 @@ namespace DoAnBackend.Migrations
                     b.Property<Guid>("AppointmentId")
                         .HasColumnType("uuid");
 
+                    b.Property<string>("AppointmentName")
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
@@ -395,13 +401,25 @@ namespace DoAnBackend.Migrations
                     b.Property<string>("Diagnsis")
                         .HasColumnType("text");
 
+                    b.Property<string>("DoctorEmail")
+                        .HasColumnType("text");
+
                     b.Property<string>("DoctorId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("DoctorName")
                         .HasColumnType("text");
 
                     b.Property<DateOnly?>("NextAppointment")
                         .HasColumnType("date");
 
                     b.Property<string>("PatientId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PatientName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PrescriptionName")
                         .HasColumnType("text");
 
                     b.Property<DateTime>("UpdateDate")
@@ -444,8 +462,14 @@ namespace DoAnBackend.Migrations
                     b.Property<Guid>("MedicineId")
                         .HasColumnType("uuid");
 
+                    b.Property<string>("MedicineName")
+                        .HasColumnType("text");
+
                     b.Property<Guid>("PrescriptionId")
                         .HasColumnType("uuid");
+
+                    b.Property<string>("PrescriptionName")
+                        .HasColumnType("text");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
@@ -508,6 +532,64 @@ namespace DoAnBackend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Services");
+                });
+
+            modelBuilder.Entity("DoAnBackend.Data.Shift", b =>
+                {
+                    b.Property<Guid?>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.Property<string>("DoctorId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("DoctorName")
+                        .HasColumnType("text");
+
+                    b.Property<TimeOnly>("EndTime")
+                        .HasColumnType("time without time zone");
+
+                    b.Property<string>("NurseId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("NurseName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ShiftName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ShiftType")
+                        .HasColumnType("text");
+
+                    b.Property<TimeOnly>("StartTime")
+                        .HasColumnType("time without time zone");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .ValueGeneratedOnUpdate()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.Property<DateTime>("createdDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("isActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("updatedDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DoctorId");
+
+                    b.HasIndex("NurseId");
+
+                    b.ToTable("Shifts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -625,11 +707,20 @@ namespace DoAnBackend.Migrations
                     b.Property<string>("RoleId")
                         .HasColumnType("text");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(34)
+                        .HasColumnType("character varying(34)");
+
                     b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasDiscriminator().HasValue("IdentityUserRole<string>");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -682,25 +773,12 @@ namespace DoAnBackend.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole");
 
-                    b.Property<string>("RoleName")
-                        .HasColumnType("text");
-
                     b.HasDiscriminator().HasValue("ApplicationRole");
                 });
 
             modelBuilder.Entity("DoAnBackend.Data.ApplicationUserRole", b =>
                 {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole");
-
-                    b.Property<string>("RoleId")
-                        .HasColumnType("text");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("text");
-
-                    b.HasIndex("RoleId");
-
-                    b.HasIndex("UserId");
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUserRole<string>");
 
                     b.HasDiscriminator().HasValue("ApplicationUserRole");
                 });
@@ -820,6 +898,23 @@ namespace DoAnBackend.Migrations
                     b.Navigation("Prescription");
                 });
 
+            modelBuilder.Entity("DoAnBackend.Data.Shift", b =>
+                {
+                    b.HasOne("DoAnBackend.Data.Doctor", "Doctor")
+                        .WithMany("Shifts")
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("DoAnBackend.Data.Nurse", "Nurse")
+                        .WithMany("Shifts")
+                        .HasForeignKey("NurseId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("Nurse");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -854,12 +949,6 @@ namespace DoAnBackend.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("DoAnBackend.Data.ApplicationUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -875,11 +964,15 @@ namespace DoAnBackend.Migrations
                 {
                     b.HasOne("DoAnBackend.Data.ApplicationRole", "Role")
                         .WithMany("UserRoles")
-                        .HasForeignKey("RoleId");
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DoAnBackend.Data.ApplicationUser", "User")
                         .WithMany("UserRoles")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Role");
 
@@ -929,6 +1022,8 @@ namespace DoAnBackend.Migrations
                     b.Navigation("Appointments");
 
                     b.Navigation("Prescriptions");
+
+                    b.Navigation("Shifts");
                 });
 
             modelBuilder.Entity("DoAnBackend.Data.Nurse", b =>
@@ -936,6 +1031,8 @@ namespace DoAnBackend.Migrations
                     b.Navigation("Appointments");
 
                     b.Navigation("Invoices");
+
+                    b.Navigation("Shifts");
                 });
 
             modelBuilder.Entity("DoAnBackend.Data.Patient", b =>

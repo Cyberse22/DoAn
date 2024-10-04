@@ -13,5 +13,7 @@ namespace DoAnBackend.Repositories.Interface
         //Task<List<AppointmentModel>> GetAppointmentsByPatientEmailAsync(string email);
         Task<IEnumerable<Appointment>> GetCompletedAppointmentsAsync(string patientEmail, DateOnly startDate, DateOnly endDate);
         Task<IEnumerable<Appointment>> GetAppointmentsByPatientEmailAsync(string email);
+        Task<List<Appointment>> GetByAppointmentNameContainsAsync(string appointmentName);
+        Task<Appointment?> GetByAppointmentNameDetailsAsync(string appointmentName);
     }
 }

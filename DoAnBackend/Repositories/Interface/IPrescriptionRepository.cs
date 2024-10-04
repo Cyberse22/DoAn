@@ -4,7 +4,8 @@ namespace DoAnBackend.Repositories.Interface
 {
     public interface IPrescriptionRepository
     {
-        Task<IEnumerable<Prescription>> GetPrescriptionsByDateAsync(DateOnly appointmentDate);
-        Task AddPrescriptionAsync(Prescription prescription);
+        Task<Prescription> GetPrescriptionByAppointmentName(string appointmentName);
+        Task<Prescription> CreatePrescriptionAsync(Prescription prescription);
+        Task UpdatePrescription(Prescription prescription);
     }
 }

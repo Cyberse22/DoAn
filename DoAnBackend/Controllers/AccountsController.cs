@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace DoAnBackend.Controllers
@@ -18,18 +19,14 @@ namespace DoAnBackend.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IAccountService _accountService;
-        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IMapper _mapper;
-        
 
-        public AccountsController(IAccountService service, UserManager<ApplicationUser> userManager, IHttpContextAccessor httpContextAccessor, IMapper mapper)
+        public AccountsController(IAccountService service, UserManager<ApplicationUser> userManager, IMapper mapper)
         {
             _accountService = service;
             _userManager = userManager;
-            _httpContextAccessor = httpContextAccessor;
             _mapper = mapper;
         }
-
         [HttpPost("SignUp")]
         public async Task<IActionResult> SignUp(SignUpModel signUpModel)
         {
@@ -41,7 +38,6 @@ namespace DoAnBackend.Controllers
 
             return StatusCode(500);
         }
-
         [HttpPost("SignIn")]
         public async Task<IActionResult> SignIn(SignInModel signInModel)
         {
@@ -83,88 +79,24 @@ namespace DoAnBackend.Controllers
             return BadRequest(result.Errors);
         }
 
-        //[Authorize]
-        //[HttpGet("GetCurrentUser")]
-        //public async Task<ActionResult<CurrentUserModel>> GetCurrentUser() 
-        //{
-        //    var email = User.FindFirst(ClaimTypes.Email)?.Value;
-
-        //    if (string.IsNullOrEmpty(email))
-        //    {
-        //        return NotFound(email); 
-        //    }
-
-        //    var userId = await _accountService.GetUserByEmailAsync(email);
-
-        //    var currentUser = new CurrentUserModel
-        //    {
-        //        Id = userId,
-        //        Email = email
-        //    };
-        //    currentUser.Email = email;
-        //    currentUser.Id = userId;
-        //    return Ok(currentUser);
-        //}
-
-        //private async Task<CurrentUserModel> CreateCurrentUserModel()
-        //{
-        //    var email = User.FindFirst(ClaimTypes.Email)?.Value;
-
-        //    if (string.IsNullOrEmpty(email))
-        //    {
-        //        throw new InvalidOperationException("Không tìm thấy email trong claims."); // Ném exception nếu không tìm thấy email
-        //    }
-
-        //    var userId = await _accountService.GetUserByEmailAsync(email);
-
-        //    if (string.IsNullOrEmpty(userId))
-        //    {
-        //        throw new InvalidOperationException("Người dùng không tìm thấy."); // Ném exception nếu không tìm thấy người dùng
-        //    }
-
-        //    return new CurrentUserModel
-        //    {
-        //        Id = userId,
-        //        Email = email
-        //    };
-        //}
-
         [Authorize]
-        [HttpGet("GetCurrentUser")]
+        [HttpGet("CurrentUser")]
         public async Task<IActionResult> GetCurrentUser()
         {
-            var currentUser = await Helper.CreateCurrentUserModel(_accountService, User);
-
-            if (currentUser == null)
+            var email = User.FindFirstValue(ClaimTypes.Email); // Retrieve email from JWT token
+            var role = User.FindFirstValue(ClaimTypes.Role);
+            if (string.IsNullOrEmpty(email))
             {
-                return NotFound("Người dùng không tìm thấy.");
+                return Unauthorized("User email not found.");
             }
 
-            return Ok(currentUser);
-        }
+            var user = await _accountService.GetCurrentUserByEmailAsync(email);
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
 
-        [Authorize]
-        [HttpGet("GetCurrentUser2")]
-        public async Task<IActionResult> GetCurrentUser2()
-        {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userId == null)
-            {
-                return Unauthorized();
-            }
-            var user = await _userManager.FindByIdAsync(userId);
-            if (user == null) 
-            {
-                return NotFound("User Not Found");
-            }
-            var currentUser = new
-            {
-                user.Email,
-                user.FirstName, 
-                user.LastName,
-                user.PhoneNumber
-            };
-            return Ok(currentUser);
+            return Ok(user);
         }
 
         [Authorize]
