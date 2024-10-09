@@ -17,6 +17,18 @@ namespace DoAnBackend.Services
             _mapper = mapper;
             _appointmentRepository = appointmentRepository;
         }
+
+        public async Task AddMedicineToPrescriptionDetailsAsync(string prescriptionName, List<PrescriptionModel.CreatePrescriptionDetails> medicines)
+        {
+            var prescriptionDetails = medicines.Select(m => new PrescriptionDetail
+            {
+                PrescriptionName = prescriptionName,
+                MedicineName = m.MedicineID,
+                Quantity = m.Quantity,
+            }).ToList();
+            await _prescriptionRepository.AddPrescriptionDetailsAsync(prescriptionDetails);
+        }
+
         public async Task<PrescriptionModel> CreatePrescriptionAsync(PrescriptionModel.CreatePrescription prescriptionModel, string appointmentName)
         {
             // Lấy thông tin chi tiết của Appointment bằng tên
@@ -37,11 +49,13 @@ namespace DoAnBackend.Services
             var prescription = new Prescription
             {
                 PrescriptionName = prescriptionName,
-                Diagnsis = prescriptionModel.Diagnsis,
+                Conclusion = prescriptionModel.Conclusion,
                 NextAppointment = prescriptionModel.NextAppointment,
                 AppointmentId = appointment.Id, // Lấy trực tiếp từ Appointment
                 AppointmentName = appointmentName,
+                PatientId = appointment.PatientId,
                 PatientName = appointment.PatientName,
+                DoctorId = appointment.DoctorId,
                 DoctorName = appointment.DoctorName,
                 DoctorEmail = appointment.DoctorEmail
             };

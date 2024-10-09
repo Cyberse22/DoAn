@@ -5,7 +5,7 @@ namespace DoAnBackend.Data
     public class Prescription : BaseEntity
     {
         public string? PrescriptionName { get; set; }
-        public string? Diagnsis { get; set; }
+        public string? Conclusion { get; set; }
         public DateOnly? NextAppointment { get; set; }
 
         public string? PatientId { get; set; }

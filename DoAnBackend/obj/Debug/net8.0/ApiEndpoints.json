@@ -491,6 +491,22 @@
   },
   {
     "ContainingType": "DoAnBackend.Controllers.AppointmentController",
+    "Method": "GetAppointmentsByStatus",
+    "RelativePath": "api/Appointment/GetByStatus",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "appointmentStatus",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.AppointmentController",
     "Method": "GetPatientHistory",
     "RelativePath": "api/Appointment/GetPatientHistory",
     "HttpMethod": "GET",
@@ -581,27 +597,6 @@
   },
   {
     "ContainingType": "DoAnBackend.Controllers.PresciptionController",
-    "Method": "CreatePrescription",
-    "RelativePath": "api/Presciption",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "model",
-        "Type": "DoAnBackend.Models.PrescriptionModel\u002BCreatePrescription",
-        "IsRequired": true
-      },
-      {
-        "Name": "appointmentName",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DoAnBackend.Controllers.PresciptionController",
     "Method": "GetPrescription",
     "RelativePath": "api/Presciption/{appointmentName}",
     "HttpMethod": "GET",
@@ -633,6 +628,59 @@
         "Name": "prescriptionModel",
         "Type": "DoAnBackend.Models.PrescriptionModel",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.PresciptionController",
+    "Method": "AddMedicinesToPrescription",
+    "RelativePath": "api/Presciption/Add-Medicines",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createPrescription",
+        "Type": "DoAnBackend.Models.PrescriptionModel\u002BCreatePrescriptionDetails",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.PresciptionController",
+    "Method": "AddMedicinesListToPrescription",
+    "RelativePath": "api/Presciption/Add-Medicines-List",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createPrescriptionDetails",
+        "Type": "System.Collections.Generic.List\u00601[[DoAnBackend.Models.PrescriptionModel\u002BCreatePrescriptionDetails, DoAnBackend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoAnBackend.Controllers.PresciptionController",
+    "Method": "CreatePrescription",
+    "RelativePath": "api/Presciption/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "DoAnBackend.Models.PrescriptionModel\u002BCreatePrescription",
+        "IsRequired": true
+      },
+      {
+        "Name": "appointmentName",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

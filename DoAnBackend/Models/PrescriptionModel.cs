@@ -3,7 +3,7 @@
     public class PrescriptionModel
     {
         public string? PrescriptionName { get; set; }
-        public string? Diagnsis { get; set; }
+        public string? Conclusion { get; set; }
         public DateOnly? NextAppointment { get; set; }
 
         public string? PatientId { get; set; }
@@ -20,14 +20,23 @@
 
         public class PrescriptionDetailModel
         {
+            public string MedicineID { get; set; }
             public string? MedicineName { get; set; }
+            public string? Unit { get; set; }
             public int Quantity { get; set; }
         }
         public class CreatePrescription
         {
             public string? AppointmentName { get; set; }
-            public string? Diagnsis { get; set; }
+            public string? Conclusion { get; set; }
             public DateOnly? NextAppointment { get; set; }
+        }
+        public class CreatePrescriptionDetails
+        {
+            public string? PrescriptionName { get; set; }
+            public string MedicineID { get; set; }
+            public string? Unit {  get; set; }
+            public int Quantity { get; set; }
         }
     }
 }

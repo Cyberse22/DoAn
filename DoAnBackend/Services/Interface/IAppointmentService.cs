@@ -17,5 +17,6 @@ namespace DoAnBackend.Services.Interface
         Task<IEnumerable<AppointmentModel>> GetAppointmentsByPatientEmailAsync(string email);
         Task<List<AppointmentModel>> GetAppointmentsByNameContainsAsync(string appointmentName);
         Task<AppointmentModel?> GetByAppointmentNameAsync(string appointmentName);
+        Task<List<Appointment>> GetAppointmentsByStatus(string status);
     }
 }

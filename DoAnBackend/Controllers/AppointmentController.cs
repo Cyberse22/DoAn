@@ -156,5 +156,11 @@ namespace DoAnBackend.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("GetByStatus")]
+        public async Task<IActionResult> GetAppointmentsByStatus(string appointmentStatus)
+        {
+            var appointment = await _appointmentService.GetAppointmentsByStatus(appointmentStatus);
+            return Ok(appointment);
+        }
     }
 }

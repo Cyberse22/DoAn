@@ -14,7 +14,7 @@
       </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="ClinicDb@localhost" uuid="d79407d1-c402-44b7-8f27-d23456843694">
+    <data-source source="LOCAL" name="ClinicDb@localhost" uuid="4be37be8-b0d1-4e93-9b16-d68952f1b9ba">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <configured-by-url>true</configured-by-url>

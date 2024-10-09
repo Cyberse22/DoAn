@@ -2,6 +2,7 @@
 using DoAnBackend.Data;
 using DoAnBackend.Models;
 using System.Globalization;
+using static DoAnBackend.Models.PrescriptionModel;
 
 namespace DoAnBackend.Helpers
 {
@@ -39,6 +40,27 @@ namespace DoAnBackend.Helpers
                     .ForMember(dest => dest.StartTime, opt => opt.MapFrom(src => TimeOnly.ParseExact(src.StartTime, "HH:mm")))
                     .ForMember(dest => dest.EndTime, opt => opt.MapFrom(src => TimeOnly.ParseExact(src.EndTime, "HH:mm")))
                     .ReverseMap();
+            CreateMap<Medicine, MedicineModel>()
+            .ForMember(dest => dest.MedicineId, opt => opt.MapFrom(src => src.MedicineId))
+            .ReverseMap();
+
+            // Mapping cho PrescriptionDetail
+            CreateMap<PrescriptionDetail, PrescriptionDetailModel>()
+                .ForMember(dest => dest.MedicineID, opt => opt.MapFrom(src => src.MedicineId))
+                .ForMember(dest => dest.MedicineName, opt => opt.MapFrom(src => src.Medicine.Name))
+                .ForMember(dest => dest.Unit, opt => opt.MapFrom(src => src.Medicine.Unit))
+                .ReverseMap();
+
+            // Mapping cho Prescription
+            CreateMap<Prescription, PrescriptionModel>()
+                .ForMember(dest => dest.PrescriptionDetails, opt => opt.MapFrom(src => src.PrescriptionDetails))
+                .ReverseMap();
+
+            // Mapping cho CreatePrescriptionDetailModel
+            CreateMap<PrescriptionModel.CreatePrescriptionDetails, PrescriptionDetail>()
+                .ForMember(dest => dest.MedicineId, opt => opt.MapFrom(src => src.MedicineID))
+                .ForMember(dest => dest.Unit, opt => opt.MapFrom(src => src.Unit))
+                .ReverseMap();
         }
     }
 }

@@ -88,5 +88,12 @@ namespace DoAnBackend.Repositories
             return await _context.Appointments
                                  .FirstOrDefaultAsync(a => a.AppointmentName == appointmentName);
         }
+
+        public async Task<List<Appointment>> GetAppointmentsByStatusAsync(string status)
+        {
+            return await _context.Appointments
+                                 .Where (a => a.Status == status)
+                                 .ToListAsync();
+        }
     }
 }

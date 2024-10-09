@@ -1,6 +1,7 @@
 ﻿using DoAnBackend.Data;
 using DoAnBackend.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace DoAnBackend.Repositories
 {
@@ -15,6 +16,11 @@ namespace DoAnBackend.Repositories
         {
             await _context.Medicines.AddAsync(medicine);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<Medicine> GetMedicineAsync(string medicineId)
+        {
+            return await _context.Medicines.FirstOrDefaultAsync(m => m.MedicineId == medicineId);
         }
 
         public async Task<IEnumerable<Medicine>> SearchMedicineAsync(string searchTerm)
@@ -42,5 +48,6 @@ namespace DoAnBackend.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+        
     }
 }

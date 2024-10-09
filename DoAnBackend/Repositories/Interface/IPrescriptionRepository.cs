@@ -7,5 +7,6 @@ namespace DoAnBackend.Repositories.Interface
         Task<Prescription> GetPrescriptionByAppointmentName(string appointmentName);
         Task<Prescription> CreatePrescriptionAsync(Prescription prescription);
         Task UpdatePrescription(Prescription prescription);
+        Task AddPrescriptionDetailsAsync(List<PrescriptionDetail> prescription);
     }
 }

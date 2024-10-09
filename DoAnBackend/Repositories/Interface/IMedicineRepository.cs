@@ -9,5 +9,6 @@ namespace DoAnBackend.Repositories.Interface
         Task<IEnumerable<Medicine>> SearchMedicineAsync(string searchTerm);
         Task AddMedicineAsync(Medicine medicine);
         Task UpdateMedicineAsync(Medicine medicine);
+        Task <Medicine> GetMedicineAsync(string medicineId);
     }
 }

@@ -55,6 +55,7 @@ namespace DoAnBackend.Services
             var doctor = await _accountRepository.GetCurrentUserByEmailAsync2(doctorEmail);
             appointment.Status = StaticEntity.Status.ExaminationInProgress;
             appointment.DoctorEmail = doctorEmail;
+            appointment.DoctorId = doctor.Id;
             appointment.DoctorName = $"{doctor.FirstName} {doctor.LastName}";
 
             await _appointmentRepository.UpdateAppointmentAsync(appointment);
@@ -139,6 +140,11 @@ namespace DoAnBackend.Services
         public async Task<IEnumerable<Appointment>> GetPatientHistoryAsync(string patientEmail, DateOnly startDate, DateOnly endDate)
         {
             return await _appointmentRepository.GetCompletedAppointmentsAsync(patientEmail, startDate, endDate);
+        }
+
+        public async Task<List<Appointment>> GetAppointmentsByStatus(string status)
+        {
+            return await _appointmentRepository.GetAppointmentsByStatusAsync(status);
         }
     }
 }

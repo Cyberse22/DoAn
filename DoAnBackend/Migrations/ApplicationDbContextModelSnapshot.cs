@@ -115,7 +115,7 @@ namespace DoAnBackend.Migrations
 
             modelBuilder.Entity("DoAnBackend.Data.Appointment", b =>
                 {
-                    b.Property<Guid?>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -193,7 +193,7 @@ namespace DoAnBackend.Migrations
 
             modelBuilder.Entity("DoAnBackend.Data.Invoice", b =>
                 {
-                    b.Property<Guid?>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -246,7 +246,7 @@ namespace DoAnBackend.Migrations
 
             modelBuilder.Entity("DoAnBackend.Data.InvoiceMedicine", b =>
                 {
-                    b.Property<Guid?>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -295,7 +295,7 @@ namespace DoAnBackend.Migrations
 
             modelBuilder.Entity("DoAnBackend.Data.InvoiceService", b =>
                 {
-                    b.Property<Guid?>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -344,7 +344,7 @@ namespace DoAnBackend.Migrations
 
             modelBuilder.Entity("DoAnBackend.Data.Medicine", b =>
                 {
-                    b.Property<Guid?>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -352,6 +352,9 @@ namespace DoAnBackend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.Property<string>("MedicineId")
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
@@ -383,7 +386,7 @@ namespace DoAnBackend.Migrations
 
             modelBuilder.Entity("DoAnBackend.Data.Prescription", b =>
                 {
-                    b.Property<Guid?>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -393,13 +396,13 @@ namespace DoAnBackend.Migrations
                     b.Property<string>("AppointmentName")
                         .HasColumnType("text");
 
+                    b.Property<string>("Conclusion")
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
-
-                    b.Property<string>("Diagnsis")
-                        .HasColumnType("text");
 
                     b.Property<string>("DoctorEmail")
                         .HasColumnType("text");
@@ -450,7 +453,7 @@ namespace DoAnBackend.Migrations
 
             modelBuilder.Entity("DoAnBackend.Data.PrescriptionDetail", b =>
                 {
-                    b.Property<Guid?>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -458,6 +461,9 @@ namespace DoAnBackend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
                         .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.Property<string>("MedicineID")
+                        .HasColumnType("text");
 
                     b.Property<Guid>("MedicineId")
                         .HasColumnType("uuid");
@@ -473,6 +479,9 @@ namespace DoAnBackend.Migrations
 
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
+
+                    b.Property<string>("Unit")
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("UpdateDate")
                         .ValueGeneratedOnUpdate()
@@ -499,7 +508,7 @@ namespace DoAnBackend.Migrations
 
             modelBuilder.Entity("DoAnBackend.Data.Service", b =>
                 {
-                    b.Property<Guid?>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -536,7 +545,7 @@ namespace DoAnBackend.Migrations
 
             modelBuilder.Entity("DoAnBackend.Data.Shift", b =>
                 {
-                    b.Property<Guid?>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 

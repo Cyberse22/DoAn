@@ -12,6 +12,12 @@ namespace DoAnBackend.Repositories
             _context = context;
         }
 
+        public async Task AddPrescriptionDetailsAsync(List<PrescriptionDetail> prescription)
+        {
+            _context.PrescriptionDetails.AddRange(prescription);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<Prescription> CreatePrescriptionAsync(Prescription prescription)
         {
             _context.Prescriptions.Add(prescription);

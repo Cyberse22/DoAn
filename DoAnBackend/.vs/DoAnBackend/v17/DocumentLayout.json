@@ -3,12 +3,76 @@
   "WorkspaceRootPath": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\users\\kieth\\onedrive\\desktop\\doan\\doanbackend\\services\\prescriptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:services\\prescriptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\users\\kieth\\onedrive\\desktop\\doan\\doanbackend\\helpers\\applicationmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:helpers\\applicationmapper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\users\\kieth\\onedrive\\desktop\\doan\\doanbackend\\models\\prescriptionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:models\\prescriptionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\users\\kieth\\onedrive\\desktop\\doan\\doanbackend\\data\\prescription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:data\\prescription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\users\\kieth\\onedrive\\desktop\\doan\\doanbackend\\models\\medicinemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:models\\medicinemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\users\\kieth\\onedrive\\desktop\\doan\\doanbackend\\data\\prescriptiondetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:data\\prescriptiondetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\users\\kieth\\onedrive\\desktop\\doan\\doanbackend\\data\\medicine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:data\\medicine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\users\\kieth\\onedrive\\desktop\\doan\\doanbackend\\controllers\\presciptioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:controllers\\presciptioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\users\\kieth\\onedrive\\desktop\\doan\\doanbackend\\data\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:data\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\users\\kieth\\onedrive\\desktop\\doan\\doanbackend\\repositories\\medicinerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:repositories\\medicinerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\users\\kieth\\onedrive\\desktop\\doan\\doanbackend\\services\\interface\\iprescriptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:services\\interface\\iprescriptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\users\\kieth\\onedrive\\desktop\\doan\\doanbackend\\repositories\\prescriptionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:repositories\\prescriptionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\users\\kieth\\onedrive\\desktop\\doan\\doanbackend\\repositories\\appointmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:repositories\\appointmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\users\\kieth\\onedrive\\desktop\\doan\\doanbackend\\services\\interface\\iappointmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:services\\interface\\iappointmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\users\\kieth\\onedrive\\desktop\\doan\\doanbackend\\controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:controllers\\appointmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\users\\kieth\\onedrive\\desktop\\doan\\doanbackend\\services\\appointmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:services\\appointmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\users\\kieth\\onedrive\\desktop\\doan\\doanbackend\\repositories\\interface\\iappointmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:repositories\\interface\\iappointmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\users\\kieth\\onedrive\\desktop\\doan\\doanbackend\\repositories\\interface\\imedicinerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:repositories\\interface\\imedicinerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|c:\\users\\kieth\\onedrive\\desktop\\doan\\doanbackend\\repositories\\interface\\iprescriptionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF505612-161E-4143-BE41-69015B0F495B}|DoAnBackend.csproj|solutionrelative:repositories\\interface\\iprescriptionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +82,240 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApplicationMapper.cs",
+              "DocumentMoniker": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Helpers\\ApplicationMapper.cs",
+              "RelativeDocumentMoniker": "Helpers\\ApplicationMapper.cs",
+              "ToolTip": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Helpers\\ApplicationMapper.cs",
+              "RelativeToolTip": "Helpers\\ApplicationMapper.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAYwDwAAABcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-09T19:10:56.508Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BaseEntity.cs",
+              "DocumentMoniker": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Data\\BaseEntity.cs",
+              "RelativeDocumentMoniker": "Data\\BaseEntity.cs",
+              "ToolTip": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Data\\BaseEntity.cs",
+              "RelativeToolTip": "Data\\BaseEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-09T19:04:57.788Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IAppointmentService.cs",
+              "DocumentMoniker": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Services\\Interface\\IAppointmentService.cs",
+              "RelativeDocumentMoniker": "Services\\Interface\\IAppointmentService.cs",
+              "ToolTip": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Services\\Interface\\IAppointmentService.cs",
+              "RelativeToolTip": "Services\\Interface\\IAppointmentService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-09T18:44:40.989Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AppointmentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Repositories\\AppointmentRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\AppointmentRepository.cs",
+              "ToolTip": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Repositories\\AppointmentRepository.cs",
+              "RelativeToolTip": "Repositories\\AppointmentRepository.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAAwF8AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-09T18:43:49.378Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IAppointmentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Repositories\\Interface\\IAppointmentRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Interface\\IAppointmentRepository.cs",
+              "ToolTip": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Repositories\\Interface\\IAppointmentRepository.cs",
+              "RelativeToolTip": "Repositories\\Interface\\IAppointmentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-09T18:42:04.332Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AppointmentController.cs",
+              "DocumentMoniker": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Controllers\\AppointmentController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AppointmentController.cs",
+              "ToolTip": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Controllers\\AppointmentController.cs",
+              "RelativeToolTip": "Controllers\\AppointmentController.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAIAwwJcAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-09T18:34:36.991Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AppointmentService.cs",
+              "DocumentMoniker": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Services\\AppointmentService.cs",
+              "RelativeDocumentMoniker": "Services\\AppointmentService.cs",
+              "ToolTip": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Services\\AppointmentService.cs",
+              "RelativeToolTip": "Services\\AppointmentService.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAApwC4AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-09T18:34:37.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "PrescriptionService.cs",
+              "DocumentMoniker": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Services\\PrescriptionService.cs",
+              "RelativeDocumentMoniker": "Services\\PrescriptionService.cs",
+              "ToolTip": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Services\\PrescriptionService.cs",
+              "RelativeToolTip": "Services\\PrescriptionService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAMwCAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-09T18:26:50.726Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IPrescriptionService.cs",
+              "DocumentMoniker": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Services\\Interface\\IPrescriptionService.cs",
+              "RelativeDocumentMoniker": "Services\\Interface\\IPrescriptionService.cs",
+              "ToolTip": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Services\\Interface\\IPrescriptionService.cs",
+              "RelativeToolTip": "Services\\Interface\\IPrescriptionService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAACJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-09T18:25:27.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PrescriptionRepository.cs",
+              "DocumentMoniker": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Repositories\\PrescriptionRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\PrescriptionRepository.cs",
+              "ToolTip": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Repositories\\PrescriptionRepository.cs",
+              "RelativeToolTip": "Repositories\\PrescriptionRepository.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAowBEAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-09T18:24:32.127Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IPrescriptionRepository.cs",
+              "DocumentMoniker": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Repositories\\Interface\\IPrescriptionRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Interface\\IPrescriptionRepository.cs",
+              "ToolTip": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Repositories\\Interface\\IPrescriptionRepository.cs",
+              "RelativeToolTip": "Repositories\\Interface\\IPrescriptionRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-09T18:23:44.164Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Medicine.cs",
+              "DocumentMoniker": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Data\\Medicine.cs",
+              "RelativeDocumentMoniker": "Data\\Medicine.cs",
+              "ToolTip": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Data\\Medicine.cs",
+              "RelativeToolTip": "Data\\Medicine.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T18:23:59.318Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IMedicineRepository.cs",
+              "DocumentMoniker": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Repositories\\Interface\\IMedicineRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Interface\\IMedicineRepository.cs",
+              "ToolTip": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Repositories\\Interface\\IMedicineRepository.cs",
+              "RelativeToolTip": "Repositories\\Interface\\IMedicineRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAYAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T18:22:58.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MedicineRepository.cs",
+              "DocumentMoniker": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Repositories\\MedicineRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\MedicineRepository.cs",
+              "ToolTip": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Repositories\\MedicineRepository.cs",
+              "RelativeToolTip": "Repositories\\MedicineRepository.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA2wCAAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T18:22:18.227Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MedicineModel.cs",
+              "DocumentMoniker": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Models\\MedicineModel.cs",
+              "RelativeDocumentMoniker": "Models\\MedicineModel.cs",
+              "ToolTip": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Models\\MedicineModel.cs",
+              "RelativeToolTip": "Models\\MedicineModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T18:22:02.76Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PrescriptionDetail.cs",
+              "DocumentMoniker": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Data\\PrescriptionDetail.cs",
+              "RelativeDocumentMoniker": "Data\\PrescriptionDetail.cs",
+              "ToolTip": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Data\\PrescriptionDetail.cs",
+              "RelativeToolTip": "Data\\PrescriptionDetail.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T18:19:27.473Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PresciptionController.cs",
+              "DocumentMoniker": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Controllers\\PresciptionController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PresciptionController.cs",
+              "ToolTip": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Controllers\\PresciptionController.cs",
+              "RelativeToolTip": "Controllers\\PresciptionController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwCsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-06T18:14:11.162Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "PrescriptionModel.cs",
               "DocumentMoniker": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Models\\PrescriptionModel.cs",
               "RelativeDocumentMoniker": "Models\\PrescriptionModel.cs",
               "ToolTip": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Models\\PrescriptionModel.cs",
               "RelativeToolTip": "Models\\PrescriptionModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAswCQAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T16:32:28.053Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Prescription.cs",
-              "DocumentMoniker": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Data\\Prescription.cs",
-              "RelativeDocumentMoniker": "Data\\Prescription.cs",
-              "ToolTip": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\Data\\Prescription.cs",
-              "RelativeToolTip": "Data\\Prescription.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-04T16:32:20.778Z",
+              "WhenOpened": "2024-10-04T18:21:52.777Z",
               "EditorCaption": ""
             }
           ]
