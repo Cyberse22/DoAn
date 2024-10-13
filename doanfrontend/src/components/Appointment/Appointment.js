@@ -4,12 +4,12 @@ import AppointmentHistory from "./AppointmentHistory";
 import './AppointmentStyles.css';
 import Sidebar from "../Commons/Sidebar";
 import Footer from "../Commons/Footer";
-import {UserContext} from "../../contexts/UserContext"; // CSS quản lý giao diện
+import {MyUserContext} from "../../configs/Contexts";
 
 const AppointmentPage = () => { // Nhận role từ props
     const [activeTab, setActiveTab] = useState('book'); // Quản lý tab đang được chọn
     const [appointments, setAppointments] = useState([]); // Lưu danh sách lịch hẹn
-    const { role } = useContext(UserContext); // Lấy role từ UserContext
+    const { role } = useContext(MyUserContext); // Lấy role từ UserContext
 
 
     useEffect(() => {

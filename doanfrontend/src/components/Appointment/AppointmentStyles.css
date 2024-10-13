@@ -1,12 +1,11 @@
 .appointment-page {
-    width: 75%; /* Chiều rộng của trang lịch hẹn */
-    padding: 20px; /* Padding cho appointment page */
-    overflow-y: auto; /* Cuộn dọc nếu nội dung dài */
+    width: calc(100% - 250px); /* Điều chỉnh chiều rộng để trừ phần sidebar */
+    padding: 20px;
+    margin-left: 250px; /* Đẩy nội dung sang bên phải để không đè lên sidebar */
     display: flex;
-    flex-direction: column; /* Xếp chồng theo cột */
-    height: 100vh; /* Chiều cao của appointment-page */
+    flex-direction: column;
+    overflow-y: auto; /* Cho phép cuộn dọc nếu nội dung dài */
 }
-
 
 .tabs {
   display: flex;
@@ -70,10 +69,10 @@
   color: white;
 }
 
-.container {
-    display: flex; /* Sử dụng flexbox để tạo bố cục */
-    height: 100vh; /* Chiều cao 100% cửa sổ */
-}
+/*.container {*/
+/*    display: flex; !* Sử dụng flexbox để tạo bố cục *!*/
+/*    height: 100vh; !* Chiều cao 100% cửa sổ *!*/
+/*}*/
 
 /* Footer */
 .footer {
@@ -101,6 +100,8 @@
     background-color: #f4f4f4; /* Màu nền cho sidebar */
     padding: 20px; /* Padding cho sidebar */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Bóng đổ cho sidebar */
+    position: fixed;
+    height: 100vh;
 }
 
 

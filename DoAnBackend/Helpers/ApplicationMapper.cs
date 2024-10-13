@@ -41,7 +41,7 @@ namespace DoAnBackend.Helpers
                     .ForMember(dest => dest.EndTime, opt => opt.MapFrom(src => TimeOnly.ParseExact(src.EndTime, "HH:mm")))
                     .ReverseMap();
             CreateMap<Medicine, MedicineModel>()
-            .ForMember(dest => dest.MedicineId, opt => opt.MapFrom(src => src.MedicineId))
+            .ForMember(dest => dest.MedicineID, opt => opt.MapFrom(src => src.MedicineID))
             .ReverseMap();
 
             // Mapping cho PrescriptionDetail

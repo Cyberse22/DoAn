@@ -1,0 +1,205 @@
+/* Container chính cho trang Create Invoice */
+.create-invoice-container {
+    flex-grow: 1; /* Để nội dung chính của trang phát triển theo chiều rộng */
+    padding: 20px;
+    max-width: 800px; /* Chiều rộng của container */
+    margin: 0 auto;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Cho phép cuộn dọc nếu nội dung dài */
+}
+
+/* Styling chung cho các tiêu đề */
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Danh sách hóa đơn */
+.prescription-list, .invoice-list {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+/* Thông tin chi tiết của toa thuốc/hóa đơn */
+.prescription-details p, .invoice-list ul li {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.prescription-details h4, .invoice-list h3 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* Danh sách không có điểm đầu dòng */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Cấu trúc các mục của danh sách */
+ul li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* Hiệu ứng hover cho danh sách */
+ul li:hover {
+    background-color: #f1f1f1;
+}
+
+/* Nút tạo hóa đơn */
+.create-invoice-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.create-invoice-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Lịch sử hóa đơn */
+.invoice-history-container {
+    width: calc(100% - 250px); /* Adjust width relative to sidebar */
+    padding: 20px; /* Reduce padding */
+    margin-left: 250px; /* Ensure it does not overlap the sidebar */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 100px); /* Adjust height to avoid footer overlap */
+    background-color: #f7f7f7; /* Light background to differentiate */
+}
+
+/*.sidebar {*/
+/*    position: fixed;*/
+/*    width: 200px;*/
+/*    height: 100vh;*/
+/*    background-color: #fff;*/
+/*}*/
+
+/* Footer adjustment */
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    height: 50px;
+}
+
+.invoice-history {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+/* Nút lịch sử hóa đơn */
+.invoice-history-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Modal style */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.modal-content h3 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.modal-content label {
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: #555;
+}
+
+.modal-content input {
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+/* Các nút trong modal */
+.payment-btn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.close-btn {
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Cấu trúc lịch sử hóa đơn trong modal */
+.modal-content ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.modal-content ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.modal-content ul li:last-child {
+    border-bottom: none;
+}
+

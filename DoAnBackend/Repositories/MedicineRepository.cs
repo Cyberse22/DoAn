@@ -20,7 +20,7 @@ namespace DoAnBackend.Repositories
 
         public async Task<Medicine> GetMedicineAsync(string medicineId)
         {
-            return await _context.Medicines.FirstOrDefaultAsync(m => m.MedicineId == medicineId);
+            return await _context.Medicines.FirstOrDefaultAsync(m => m.MedicineID == medicineId);
         }
 
         public async Task<IEnumerable<Medicine>> SearchMedicineAsync(string searchTerm)

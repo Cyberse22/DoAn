@@ -84,11 +84,6 @@
     /*transition: background-color 0.3s, transform 0.3s;*/
 }
 
-/*.social-login-button:hover {*/
-/*    opacity: 0.8; !* Thay đổi độ mờ khi hover *!*/
-/*    transform: scale(1.1); !* Tăng kích thước khi hover *!*/
-/*}*/
-
 .social-login-button.facebook {
     background-color: #3b5998; /* Màu Facebook */
 }
@@ -99,6 +94,9 @@
 
 .social-login-button.signup {
     background-color: #28a745; /* Màu SignUp */
+}
+.login-label{
+    text-align: center;
 }
 /* Footer */
 .footer {
@@ -113,7 +111,7 @@
 }
 /* Sidebar */
 .sidebar {
-    width: 20%; /* Chiều rộng của sidebar */
+    width: 25%; /* Chiều rộng của sidebar */
     background-color: #f4f4f4; /* Màu nền cho sidebar */
     padding: 20px; /* Padding cho sidebar */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Bóng đổ cho sidebar */
@@ -156,4 +154,161 @@
 .container {
     display: flex; /* Sử dụng flexbox để tạo bố cục */
     height: 100vh; /* Chiều cao 100% cửa sổ */
+}
+/* SignUp */
+/* Đặt các thuộc tính chung */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Định dạng cho khung form đăng ký */
+.signup-container {
+    max-width: 500px;
+    margin: 50px auto; /* Căn giữa trang */
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề đăng ký */
+.signup-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Định dạng cho các nhãn của form */
+.signup-form .form-label {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Các ô input trong form */
+.signup-form .form-control {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+/* Căn chỉnh button đăng ký */
+.signup-button {
+    width: 100%; /* Chiếm toàn bộ chiều ngang */
+    background-color: #28a745;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signup-button:hover {
+    background-color: #218838;
+}
+
+/* Định dạng cho khoảng cách giữa các phần tử trong form */
+.signup-form .form-group {
+    margin-bottom: 20px;
+}
+
+/* Định dạng cho thông báo lỗi nếu có */
+.text-danger {
+    color: red;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="date"], input[type="file"] {
+    background-color: #f9f9f9;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    padding: 10px;
+    font-size: 14px;
+    width: 100%;
+    border-radius: 0; /* Không bo tròn viền */
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="date"]:focus, input[type="file"]:focus {
+    outline: none; /* Xóa border mặc định */
+    border-bottom: 2px solid #007bff; /* Khi focus đổi màu viền dưới */
+}
+
+/* Product */
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s;
+    margin: 10px;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.product-price {
+    font-size: 14px;
+    color: #f60;
+    margin: 10px 0;
+}
+
+.product-description {
+    font-size: 12px;
+    color: #888;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Tạo lưới với ô kích thước 200px */
+    gap: 16px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: 250px;
+    margin-bottom: 300px;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.product-price {
+    font-size: 14px;
+    color: #f60;
+    margin: 10px 0;
+}
+
+.product-description {
+    font-size: 12px;
+    color: #888;
 }

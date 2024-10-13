@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackEnd\\DoAnBackend.csproj": {}
+    "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\DoAnBackend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackEnd\\DoAnBackend.csproj": {
+    "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\DoAnBackend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackEnd\\DoAnBackend.csproj",
+        "projectUniqueName": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\DoAnBackend.csproj",
         "projectName": "DoAnBackend",
-        "projectPath": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackEnd\\DoAnBackend.csproj",
+        "projectPath": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\DoAnBackend.csproj",
         "packagesPath": "C:\\Users\\kieth\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackEnd\\obj\\",
+        "outputPath": "C:\\Users\\kieth\\OneDrive\\Desktop\\DoAn\\DoAnBackend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -43,8 +43,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
-        }
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -116,7 +117,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-preview.7.24407.12/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

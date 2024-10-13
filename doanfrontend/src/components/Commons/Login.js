@@ -1,72 +1,87 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../contexts/UserContext";
+import { MyDispatchContext, MyUserContext } from "../../configs/Contexts";
+import {Link, Navigate, useNavigate} from "react-router-dom";
 import APIs, { authApi, endpoints } from "../../configs/APIs";
 import cookie from "react-cookies";
-import "./CommonStyle.css";
+import { Button, Form } from "react-bootstrap";
+import "./CommonStyle.css"
 
 const Login = () => {
-    const { dispatch } = useContext(UserContext); // Lấy dispatch từ context
-    const [user, setUser] = useState({});
-    const [error, setError]  = useState('');
-    const [localRole, setLocalRole] = useState('Patient');
-    const navigate = useNavigate();
+    const fields = [
+        { label: "Email", type: "text", field: "email" },
+        { label: "Password", type: "password", field: "password" }
+    ];
 
-   const login = async (e) => {
-       e.preventDefault();
-       try {
-           let res = await APIs.post(endpoints['login'], {...user})
-           console.info(res.data);
-           cookie.save('token', res.data);
+    const [user, setUser] = useState({ email: "", password: "" });
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
-           let u = await authApi().set(endpoints['current-user']);
-           cookie.save('user', u.data)
+    const dispatch = useContext(MyDispatchContext);
+    const currentUser = useContext(MyUserContext);
+    const nav = useNavigate();
 
-           dispatch({
-               "type" : "login",
-               "payload": u.data
-           });
-           navigate('/home');
-       } catch (error) {
-           console.log(error);
-       }
-   }
+    const login = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setError(null); // Reset error message on new attempt
+
+        try {
+            const res = await APIs.post(endpoints['login'], user);
+            cookie.save("token", res.data);
+            const u = await authApi().get(endpoints['current-user']);
+
+            dispatch({ type: "login", payload: u.data });
+            console.log(res.data.role, res.data, u.data, u.data.role);
+            if (u.data.role === "Patient"){
+                nav("/");
+            } else if (u.data.role === "Doctor"){
+                nav("/")
+            } else if (u.data.role === "Nurse"){
+                nav("/")
+            }
+        } catch (error) {
+            setError("Login failed. Please check your email and password.");
+            console.log(error);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    const change = (event, field) => {
+        setUser(current => ({ ...current, [field]: event.target.value }));
+    }
+
+    if (currentUser !== null) {
+        return <Navigate to="/" />;
+    }
+
 
     return (
         <div className="login-container">
-            <h2>Đăng Nhập</h2>
-            <form onSubmit={login}>
-                <div>
-                    <label>Email:</label>
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Mật Khẩu:</label>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                <div className="role-selector">
-                    <label>Chọn Vai Trò:</label>
-                    <select value={localRole} onChange={(e) => setLocalRole(e.target.value)}>
-                        <option value="Patient">Bệnh Nhân</option>
-                        <option value="Doctor">Bác Sĩ</option>
-                        <option value="Nurse">Y Tá</option>
-                    </select>
-                </div>
-                <button type="submit">Đăng Nhập</button>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-            </form>
+            <h1 className="login-label text-center">ĐĂNG NHẬP</h1>
+            {error && <p className="text-danger">{error}</p>} {/* Display error message */}
+            <Form onSubmit={login}>
+                {fields.map(f => (
+                    <Form.Group className="mb-3" controlId={f.field} key={f.field}>
+                        <Form.Label>{f.label}</Form.Label>
+                        <Form.Control
+                            onChange={e => change(e, f.field)}
+                            value={user[f.field]}
+                            type={f.type}
+                            placeholder={f.label}
+                            required // Mark fields as required
+                        />
+                    </Form.Group>
+                ))}
+                <Button variant="info" type="submit" className="mb-1 mt-1" disabled={loading}>
+                    {loading ? "Loading..." : "Đăng nhập"}
+                </Button>
+            </Form>
+            <p className="mt-3 text-center">
+                Bạn chưa có tài khoản? <Link to="/SignUp">Đăng ký ngay</Link> {/* Add signup link */}
+            </p>
         </div>
     );
-};
+}
 
 export default Login;

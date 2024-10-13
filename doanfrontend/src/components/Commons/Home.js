@@ -1,55 +1,46 @@
 import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 import "./CommonStyle.css";
-import { UserContext } from "../../contexts/UserContext";
-import cookie from "react-cookies";
-
+import {MyUserContext} from "../../configs/Contexts";
+import ProductCard from "./ProductCard";
 const Home = () => {
-    const navigate = useNavigate();
-    const { user, dispatch } = useContext(UserContext); // Lấy user và dispatch từ context
+    const user = useContext(MyUserContext)
+    console.log("Current User in Home:", user);
 
-    const handleLogout = () => {
-        // Xóa token khỏi cookies
-        cookie.remove('token', { path: '/' });
-        // Gọi dispatch để cập nhật trạng thái người dùng
-        dispatch({ type: 'logout' });
-        // Chuyển hướng đến trang đăng nhập
-        navigate('/login');
-    };
+    if (user === null)
+        return <Navigate to="/login" />
+
+    // Tạm thời sử dụng dữ liệu giả để hiển thị sản phẩm
+    const products = [
+        { name: 'Paracetamol', price: 5000, description: 'Thuốc giảm đau hạ sốt' },
+        { name: 'Khám tổng quát', price: 300000, description: 'Dịch vụ khám sức khỏe' },
+        { name: 'Vitamin C', price: 10000, description: 'Thuốc bổ sung vitamin' },
+        { name: 'Khám chuyên khoa', price: 500000, description: 'Dịch vụ khám chuyên khoa' },
+    ];
 
     return (
-        <div className="home-container">
-            <Sidebar role={user?.role} />
-            <div className="main-content">
-                {user?.role === 'Patient' && (
-                    <div>
-                        <h1>Welcome, Patient {user?.name}!</h1>
-                        <p>Role: {user?.role}</p> {/* Hiển thị vai trò của người dùng */}
-                        <p>This is the home page for patients.</p>
-                    </div>
-                )}
-                {user?.role === 'Doctor' && (
-                    <div>
-                        <h1>Welcome, Doctor {user?.name}!</h1>
-                        <p>Role: {user?.role}</p> {/* Hiển thị vai trò của người dùng */}
-                        <p>This is the home page for doctors.</p>
-                    </div>
-                )}
-                {user?.role === 'Nurse' && (
-                    <div>
-                        <h1>Welcome, Nurse {user?.name}!</h1>
-                        <p>Role: {user?.role}</p> {/* Hiển thị vai trò của người dùng */}
-                        <p>This is the home page for nurses.</p>
-                    </div>
-                )}
+        <>
+            <div className="container">
+                <Sidebar />
 
-                <button onClick={handleLogout}>Logout</button>
+                {/* Phần lưới hiển thị sản phẩm */}
+                <div className="product-grid">
+                    {products.map((product, index) => (
+                        <ProductCard
+                            key={index}
+                            name={product.name}
+                            price={product.price}
+                            description={product.description}
+                        />
+                    ))}
+                </div>
+
+                <Footer />
             </div>
-            <Footer />
-        </div>
-    );
-};
+        </>
+    )
+}
 
 export default Home;

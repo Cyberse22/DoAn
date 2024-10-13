@@ -232,6 +232,7 @@ namespace DoAnBackend.Repositories
                                   LastName = u.LastName,
                                   PhoneNumber = u.PhoneNumber,
                                   Gender = u.Gender,
+                                  DateOfBirth = u.DateOfBirth,
                                   Role = r.Name // Getting the role directly
                               }).FirstOrDefaultAsync();
 

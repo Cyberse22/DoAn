@@ -508,3 +508,7 @@ C:\Users\kieth\OneDrive\Desktop\DoAn\DoAnBackend\obj\Debug\net8.0\refint\DoAnBac
 C:\Users\kieth\OneDrive\Desktop\DoAn\DoAnBackend\obj\Debug\net8.0\DoAnBackend.pdb
 C:\Users\kieth\OneDrive\Desktop\DoAn\DoAnBackend\obj\Debug\net8.0\DoAnBackend.genruntimeconfig.cache
 C:\Users\kieth\OneDrive\Desktop\DoAn\DoAnBackend\obj\Debug\net8.0\ref\DoAnBackend.dll
+C:\Users\kieth\OneDrive\Desktop\DoAn\DoAnBackend\bin\Debug\net8.0\DoAnBackend.staticwebassets.endpoints.json
+C:\Users\kieth\OneDrive\Desktop\DoAn\DoAnBackend\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\kieth\OneDrive\Desktop\DoAn\DoAnBackend\obj\Debug\net8.0\staticwebassets\msbuild.DoAnBackend.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\kieth\OneDrive\Desktop\DoAn\DoAnBackend\bin\Debug\net8.0\global.json
